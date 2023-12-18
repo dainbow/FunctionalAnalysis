@@ -791,4 +791,287 @@
 	\end{itemize}
 \end{proof}
 
+\section{Линейные ограниченные операторы в линейных нормированных пространствах}
+\subsection{Связь непрерывности и ограниченности линейного оператора}
+\begin{definition}
+  Пусть $E_1,\,E_2$ -- линейные нормированные пространства над полем $\mathbb{R}$ ($\mathbb{R}$ или $\mathbb{C}$). Тогда $A :\: E_1 \to E_2$ будем называть оператором, а $f :\: E \to \mathbb{K}$ -- функционалом.
+\end{definition}
+
+\begin{definition}
+  Оператор $A$ называется ограниченным, если для любого ограниченного $M \subset E_1$ образ $A(M)$ ограничен в $E_2$.
+\end{definition}
+
+\begin{definition}
+  Для линейных операторов можно ввести следующие определения:
+  \begin{itemize}
+    \item Образ оператора:
+    \[
+      \text{Im } A = \{y \in E_2 \:\vert\: \exists x \in E_1 :\: Ax = y\}
+    \]
+    \item Ядро оператора:
+    \[
+      \ker A = \{x \in E_1 \:\vert\: Ax = 0\}
+    \]
+  \end{itemize}
+\end{definition}
+
+\begin{definition}
+  Линейный оператор $A$ называется непрерывным, если для любой последовательности $x_n \to x$ выполнено $Ax_n \to Ax$.
+\end{definition}
+
+\begin{theorem}
+  Пусть $E_1,\,E_2$ -- линейные нормированные пространства. $A :\: E_1 \to E_2$ -- линейный оператор. Тогда $A$ -- ограниченный тогда и только тогда, когда $A$ -- непрерывный.
+\end{theorem}
+
+\begin{proof}
+  ($\Rightarrow$) Как мы знаем, $x_n \to x \Leftrightarrow \|x_n - x\| \to 0$. Тогда
+  \[
+    \|Ax_n - Ax\|_{E_2} = \|A(x_n - x)\|_{E_2} \leq \|A\| \cdot\|x_n - x\|_{E_1} \to 0
+  \]
+  ($\Leftarrow$) Предположим противное, то есть $A$ не является ограниченным:
+  \[
+    \forall K \exists x :\: \|Ax\|_{E_2} > K\|x\|_{E_1}
+  \]
+  Пусть $K$ пробегает все натуральные числа, тогда образуется последовательность $\{x_n\}$ такая, что $\|Ax_n\|_{E_2} > n\|x_n\|_{E_1}$. Все $x_n$, очевидно, ненулевые. Рассмотрим последовательность $y_n = \frac{1}{n}\frac{x_n}{\|x_n\|_{E_1}} \to 0$.
+  \[
+    \forall n \in \mathbb{N} :\: \|Ay_n\|_{E_2} = \frac{\|Ax_n\|_{E_2}}{n\|x_n\|_{E_1}} > 1
+  \]
+  Но из-за непрерывности оператора $Ay_n \to A0 = 0$. Противоречие.
+\end{proof}
+
+\subsection{Топологии и сходимости в пространстве операторов\dots}
+\begin{lemma}
+  Если $A$ -- линейный оператор, то следующие условия эквивалентны:
+  \begin{enumerate}
+    \item $A$ -- ограниченный
+    \item $\exists K :\: \|Ax\|_{E_2} \leq K\|x\|_{E_1}$
+    \item Образ единичного шара под действием оператора $A$ ограничен
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  ($1 \Rightarrow 2$) Если $A$ -- ограниченный, то образ любого ограниченного множества ограничен. В частности, образ единичного шара $B$ ограничен. То есть
+  \[
+    \exists L \: \forall x \neq 0 :\: \left\|A\left(\frac{x}{\|x\|_{E_1}}\right)\right\|_{E_2} \leq K
+  \]
+  В силу линейности оператора:
+  \[
+    \exists K \: \forall x \neq 0 :\: \|Ax\|_{E_2} \leq K\|x\|_{E_1}
+  \]
+  ($2 \Rightarrow 3$) Если 
+  \[
+    \exists K :\: \|Ax\|_{E_2} \leq K\|x\|_{E_1}
+  \]
+  , то $\forall x :\: \|x\|_{E_1} = 1$ получаем, что $\|Ax\|_{E_2} \leq K$. То есть образ единичного шара ограничен.
+  ($3 \Rightarrow 1$) 
+  \[
+    \exists K \: \forall x,\, \|x\|_{E_1} = 1 :\: \|Ax\|_{E_2} \leq K
+  \]
+  Пусть $M \subset E_1$ ограничено, то есть лежит в шаре радиуса $R$. Далее считаем, что $x \neq 0$:
+  \[
+    \forall x \in M :\: \left\|A\left(\frac{x}{\|x\|_{E_1}}\right)\right\| \leq K \Rightarrow \forall x \in M :\: \|Ax\|_{E_2} \leq K\|x\|_{E_1} \leq K\cdot R
+  \]
+\end{proof}
+
+\begin{definition}
+  Нормой линейного ограниченного оператора $A$ называется
+  \[
+    \|A\| = \inf\{K \:\vert\: \forall x :\: \|Ax\|_{E_2} \leq K\|x\|_{E_1}\}
+  \]
+\end{definition}
+
+\begin{definition}
+  $\mathcal{L}(E_1,\, E_2)$ -- пространство линейных ограниченных операторов, действующих из $E_1$ в $E_2$. Оно образует линейное пространство над $\mathbb{K}$.
+\end{definition}
+
+\begin{definition}
+  Двойственное или сопряжённое пространство -- это
+  \[
+    E^* = \mathcal{L}(E,\, \mathbb{K})
+  \]
+  где $\mathbb{K} = \mathbb{R}$ или $\mathbb{C}$, $E$ -- линейное нормированное пространство.
+\end{definition}
+
+\begin{theorem}
+  Пусть $E_1,\, E_2$ -- линейные нормированные пространства. Тогда
+  \begin{enumerate}
+    \item $\mathcal{L}(E_1,\,E_2)$ -- линейное нормированное пространство с нормой $\|A\|$.
+    \item Если $E_2$ -- банахово, то $\mathcal{L}(E_1,\, E_2)$ -- банахово.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \begin{enumerate}
+    \item Линейность данного пространства очевидна. Проверим неравенство треугольника для нормы:
+    \[
+      \|A_1 + A_2\| = \sup_{\|x\| = 1}\|(A_1 + A_2)x\| \leq   \sup_{\|x\| = 1}\|A_1x\| + \|A_2x\| \leq \sup_{\|x\| = 1}\|A_1x\| + \sup_{\|x\| = 1}\|A_2x\| = \|A_1\| + \|A_2\|
+    \]
+    \item Покажем, что $\mathcal{L}(E_1,\,E_2)$ -- полное, если $E_2$ -- полное.
+    
+    Пусть $\{A_n\} \subset \mathcal{L}$ -- фундаментальна, то есть
+    \[
+      \forall \varepsilon > 0 \: \exists N \: \forall n,\,m \geq N :\: \|A_n - A_m\| < \varepsilon
+    \]
+    Заметим, что 
+    \[
+      \forall x \in S_{E_1}(0,\,1) \: \|A_nx - A_mx\| = \|(A_n - A_m)x\| \leq \|A_n - A_m\|\|x\|_{E_1} < \varepsilon
+    \]
+    Получается, что $\forall x \in S_{E_1}(0,\,1)$ последовательность $\{A_nx\}$ фундаментальна. Так как $E_2$ -- полное, то эта последовательность сходится. Обозначим её предел через $Ax$. $A$, очевидно, линейный оператор. Покажем, что он ограничен.
+
+    Так как $\|\cdot\|$ -- непрерывная функция, то $\|A_nx\|_{E_2} \to \|Ax\|_{E_2}$. Воспользуемся тем, что $\{A_n\}$ ограничена (из-за фундаментальности), то есть 
+    \[
+      \exists K \: \forall n :\: \|A_n\| \leq K \Rightarrow \|A_nx\|_{E_2} \leq \|A_n\|\|x\|_{E_1} \leq K\|x\|_{E_1}
+    \]
+    Переходя к пределу в этом неравенстве, получаем, что $\|Ax\| \leq K\|x\|_{E_1}$. Таким образом, $A$ является ограниченным линейным оператором и лежит в $\mathcal{L}(E_1,\,E_2)$. Осталось показать, что $A_n \to A$.
+
+    Вспомним фундаментальность:
+    \[
+      \forall x \in S_{E_1}(0,\,1) :\: \|A_nx - A_mx\|_{E_2} < \varepsilon
+    \]
+    Зафиксируем номер $n$ и устремим $m$ к бесконечности. Тогда
+    \[
+      \forall x \in S_{E_1}(0,\,1) :\: \|A_nx - Ax\| \leq \varepsilon
+    \]
+    А значит 
+    \[
+      \sup_{\|x\| = 1} \|A_nx - Ax\| \leq \varepsilon
+    \]
+    Это и означает, что $\|A_n - A\| \to 0$, то есть $A_n \to A$.
+  \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+  Если $E$ -- линейное нормированное пространство, то $E^*$ всегда полное.
+\end{corollary}
+
+\subsection{Задача о продолжении непрерывного отображения}
+\begin{theorem}
+  Пусть $E_1$ -- линейное нормированное пространство, $E_2$ -- банохово пространство и $A$ -- линейный ограниченный оператор: $A :\: D(A) \to E_2$, где $D(A)$ -- линейное многообразие в $E_1 = \overline{D(A)}$. Тогда $\exists! \tilde{A} \in \mathcal{L}(E_1,\,E_2)$:
+  \begin{enumerate}
+    \item $\tilde{A}|_{D(A)} = A$
+    \item $\|\tilde{A}\| = \|A\|$
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  Единственность. 
+
+  Пусть есть $\tilde{A}^1,\, \tilde{A}^2$. Из замкнутости $E_1$:
+  \[
+    \forall x \in E_1 \: \exists\{x_n\} \subset D(A) :\: x_n \to x
+  \]
+  При этом, $\tilde{A}^1x = \lim_{n \to +\infty}Ax_n = \tilde{A}^2x$. Значит, $\tilde{A}^1 = \tilde{A}^2$.
+
+  Существование.
+
+  Определим оператор $\tilde{A}$ по формуле $\tilde{A}x = \lim_{n \to +\infty}Ax_n$. Для коректности необходимо показать:
+  \begin{itemize}
+    \item Предел $\lim_{n \to +\infty}Ax_n$ существует
+    \item Предел не зависит от выбора $\{x_n\}$
+    \item Действительно $\tilde{A}|_{D(A)} = A$
+  \end{itemize}
+
+  Покажем:
+  \begin{itemize}
+    \item Так как $\{x_n\}$ сходится, она фундаментальна, значит последовательность $\{Ax_n\} \subset E_2$ фундаментальна. Пространство $E_2$ банахово, поэтому предел $\lim_{n \to +\infty}Ax_n$ существует.
+    \item Пусть есть две последовательности $\{x_n'\},\, \{x_n''\}$, сходящиеся к одному и тому же $x \in E_1$, но пусть пределы $\lim_{n \to +\infty} Ax_n',\, \lim_{n \to +\infty}Ax_n''$ разные. Тогда возьмём последовательность $\{y_n\}$, полученную чередованием элементов $\{x_n'\},\, \{x_n''\}$. Но получим, что $\{Ay_n\}$ расходится. Противоречие предыдущему пункту.
+    \item Возьмём константную последовательность $\{x\}_{n = 1}^\infty,\, x \in D(A)$. Очевидно, что $\lim_{n \to +\infty} Ax = Ax$. По предыдущему пункту $\lim_{n \to +\infty} Ax_n$ не зависит от выбора последовательности, значит $\tilde{A}|_{D(A)} = A$.
+  \end{itemize}
+  Осталось показать, что $\tilde{A}$ -- линейный ограниченный оператор. Линейность очевидна из линейности $A$ и предела.
+
+  Ограниченность (а значит и непрерывность) очевидна из непрерывности нормы:
+  \[
+    \tilde{A}x = \lim_{n \to +\infty}Ax_n \Leftrightarrow \|Ax_n\| \to \|\tilde{A}x\|  
+  \]
+\end{proof}
+
+\subsection{Теорема Банаха-Штейнгауза}
+\begin{theorem}
+  Теорема Банаха-Штейнгауза.
+
+  Пусть $X,\,Y$ -- линейные нормированные пространства, причём $X$ полно. Пусть $\mathcal{A} \subseteq \mathcal{L}(X,\, Y)$ -- семейство линейных непрерывных операторов. Тогда
+  \[
+    \forall x \in X :\: \sup \{\|Ax\|_Y \:\vert\: A \in \mathcal{A}\} < +\infty \Rightarrow \sup\{\|A\| \:\vert\: A \in \mathcal{A}\} < +\infty
+  \]
+  То есть, из поточечной ограниченности следует равномерная ограниченность.
+\end{theorem}
+
+\begin{proof}
+  Пусть
+  \[
+    X_n = \{x \in X \:\vert\: \sup_{A \in \mathcal{A}} \|Ax\|_Y \leq n\} = \bigcap_{A \in \mathcal{A}} \{x \in X \:\vert\: \|Ax\|_Y \leq n\}
+  \]
+  Для любого $A \in \mathcal{A}$ множество $\{x \in X \:\vert\: \|Ax\|_Y \leq n\}$ замкнуто, как прообраз замкнутого шара $\overline{B}_n(0) \subset Y$ под действием непрерывного отображения $A$, а пересечение любого количества замкнутых множеств замкнуто.
+
+  Так как $\cup_{n = 1}^\infty X_n = X$, то по теореме Бэра ($X$ полное, а значит все $X_n$ не могут быть не плотными ни в одном шаре, а значит найдётся $m$ и какой-то шар, в котором $X_m$ плотно):
+  \[
+    \exists m \: \exists \overline{B}_\varepsilon(x_0) :\: \overline{B}_\varepsilon(x_0) \subseteq X_m
+  \]
+  Пусть $u \in X,\, \|u\|_X = 1$. Тогда рассмотрим $A \in \mathcal{A}$:
+  \begin{align*}
+    \|Au\|_Y = \frac{1}{\varepsilon}\|A[\varepsilon u] + Ax_0 - Ax_0\|_Y = \frac{1}{\varepsilon}\|A[x_0 + \varepsilon u] - Ax_0\|_Y \leq\\
+    \frac{1}{\varepsilon}\left(\|A[x_0 + \varepsilon u]\| + \|Ax_0\|_Y\right) \leq \frac{1}{\varepsilon} \leq \frac{1}{\varepsilon}(m + m)
+  \end{align*}
+  Последнее неравенство верно из-за того, что $x_0 \in X_m,\, x_0 + \varepsilon u \in \overline{B}_\varepsilon(x_0) \subset X_m$. В неравенстве сверху можно перейти к супремуму по $u$ и получить, что
+  \[
+    \forall A \in \mathcal{A} :\: \|A\| \leq \frac{2m}{\varepsilon} < +\infty
+  \]
+\end{proof}
+
+\subsection{Полнота пространства\dots}
+\begin{theorem}
+  Полнота $\mathcal{L}(E_1,\, E_2)$ относительно поточечной сходимости.
+
+  Пусть $E_1,\, E_2$ -- банаховы пространства, $\{A_n\} \subset \mathcal{L}(E_1,\, E_2)$, причём $\forall x \in E_1 :\: \{A_nx\}$ -- фундаментальная в $E_2$. Тогда
+  \[
+    \exists A \in \mathcal{L}(E_1,\, E_2) \: \forall x \in E_1 :\: \lim_{n \to +\infty} A_nx = Ax 
+  \]
+\end{theorem}
+
+\begin{proof}
+  Так как $\{A_nx\}$ фундаментальна в банаховом $E_2$, то $\exists \lim_{n \to +\infty} A_nx,\, Ax := \lim_{n \to +\infty}A_nx$.
+
+  Осталось показать, что определённый таким образом оператор -- линейный непрерывный. Линейность очевидна из линейности предела и каждого $A_n$.
+
+  Так как $\forall x \in E_1 :\: \{A_nx\}$ фундаментальна, то $\{A_n\}$ поточечно ограничена и по теореме Банаха-Штейнгауза ограничена равномерна:
+  \[
+    \exists M \: \forall n \in \mathbb{N} :\: \|A_n\| \leq M  
+  \]
+  Тогда
+  \[
+    \|A_nx\| \leq \|A_n\|\cdot\|x\| \leq M\|x\|,\, \|A_nx\| \to \|Ax\| \Rightarrow \|Ax\| \leq M\|x\|
+  \]
+  То есть оператор ограничен и непрерывен, а значит $A \in \mathcal{L}(E_1,\, E_2)$.
+\end{proof}
+
+\begin{theorem}
+  Критерий поточечной сходимости операторов из $\mathcal{L}(E_1,\,E_2)$.
+
+  Пусть $E_1$ -- банохово, $E_2$ -- линейное нормированное пространство. Верно, что $\forall \{A_n\} \in \mathcal{L}(E_1,\,E_2)$, $A \in \mathcal{L}(E_1,\,E_2)$:
+  \[
+    A_n \overset{\text{поточечно}}{\to} A \Leftrightarrow \begin{cases}
+      \exists M \: \forall n :\: \|A_n\| \leq M\\
+      \forall s \in S,\, E_1 =: \overline{\langle S\rangle}  :\: A_ns \to As
+    \end{cases}
+  \]
+\end{theorem}
+
+\begin{proof}
+  ($\Rightarrow$) Пункт 2 очевиден. Из поточечной сходимости $\{A_nx\}$ следует поточечная ограниченность $\{A_nx\}$. Значит, по теорема Банаха-Штейнгауза последовательность $\{\|A_n\|\}$ ограничена.
+
+  ($\Leftarrow$) Так как множество $\langle S\rangle$ всюжу плотно в $E_1$:
+  \[
+    \forall \varepsilon > 0 \: \forall x \in E_1 \: \exists y \in \langle S\rangle :\: \|x - y\| < \varepsilon
+  \]
+  Тогда для $y$ (благодаря п.2) верно:
+  \[
+    \exists N(\varepsilon,\, y) \: \forall n > N :\: \|A_ny - Ay\| < \varepsilon
+  \]
+  Перейдём к $x \in E_1$:
+  \[
+    \|A_nx - Ax\| \leq \|Ax - Ay\| + \|A_ny - Ay\| + \|A_ny - A_nx\| \leq \varepsilon\|A\| + \varepsilon + \varepsilon\|A_n\| \leq \varepsilon(\|A\| + M + 1)
+  \]
+  Значит $A_n$ поточечно сходится к $A$ на $E_1$.
+\end{proof}
+
 \end{document}
