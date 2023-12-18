@@ -68,146 +68,413 @@
 
 \subsection{Определения}
 \begin{definition}
-  Метрическим пространством называется множества $X$ с функцией $\rho :\: X^2 \to \mathbb{R}$, обладающей следующими свойствами:
-  \begin{enumerate}
-    \item $\forall x,\, y \in X :\: \rho(x,\,y) \geq 0$, причём $\rho(x,\,y) = 0 \Leftrightarrow x = y$
-    \item $\forall x,\, y \in X :\: \rho(x,\,y) = \rho(y,\,x)$
-    \item $\forall x,\,y,\,z \in X :\: \rho(x,\, z) = \rho(x,\,y) + \rho(y,\,z)$ (неравенство треугольника).
-  \end{enumerate}
-  Функция $\rho$ называется метрикой на множестве $X$.
+	Метрическим пространством называется множества $X$ с функцией $\rho :\: X^2 \to \mathbb{R}$, обладающей следующими свойствами:
+	\begin{enumerate}
+		\item $\forall x,\, y \in X :\: \rho(x,\,y) \geq 0$, причём $\rho(x,\,y) = 0 \Leftrightarrow x = y$
+		\item $\forall x,\, y \in X :\: \rho(x,\,y) = \rho(y,\,x)$
+		\item $\forall x,\,y,\,z \in X :\: \rho(x,\, z) = \rho(x,\,y) + \rho(y,\,z)$ (неравенство треугольника).
+	\end{enumerate}
+	Функция $\rho$ называется метрикой на множестве $X$.
 \end{definition}
 
 \begin{definition}
-  Топологическим пространством называется множество $X$ с системой $\tau \subseteq 2^X$, обладающей следующими свойствами:
-  \begin{enumerate}
-    \item $\emptyset,\, X \in \tau$
-    \item $\forall G_1,\, G_2 \in \tau :\: G_1 \cap G_2 \in \tau$
-    \item $\forall \{G_\alpha\}_{\alpha \in \mathcal{A}} \subset \tau :\: \bigcup_{\alpha \in \mathcal{A}} G_\alpha \in \tau$
-  \end{enumerate}
-  Система $\tau$ называется топологией на множестве $X$, а элементы системы $\tau$ -- открытыми множествами.
+	Топологическим пространством называется множество $X$ с системой $\tau \subseteq 2^X$, обладающей следующими свойствами:
+	\begin{enumerate}
+		\item $\emptyset,\, X \in \tau$
+		\item $\forall G_1,\, G_2 \in \tau :\: G_1 \cap G_2 \in \tau$
+		\item $\forall \{G_\alpha\}_{\alpha \in \mathcal{A}} \subset \tau :\: \bigcup_{\alpha \in \mathcal{A}} G_\alpha \in \tau$
+	\end{enumerate}
+	Система $\tau$ называется топологией на множестве $X$, а элементы системы $\tau$ -- открытыми множествами.
 \end{definition}
 
 \begin{definition}
-  Пусть $X$ -- метрическое пространство, $Y \subset X$. Подстранством пространства $X$ называется метрическое пространство $Y$ с метрикой, являющейся сужением метрики на $X$.
+	Пусть $X$ -- метрическое пространство, $Y \subset X$. Подстранством пространства $X$ называется метрическое пространство $Y$ с метрикой, являющейся сужением метрики на $X$.
 \end{definition}
 
 \begin{definition}
-  Пусть $X$ -- метрическое пространство. Множество $Y \subset X$ называется ограниченным, если выполнено условие $\sup_{x,\, y \in Y}\rho(x,\,y) < +\infty$
+	Пусть $X$ -- метрическое пространство. Множество $Y \subset X$ называется ограниченным, если выполнено условие $\sup_{x,\, y \in Y}\rho(x,\,y) < +\infty$
 \end{definition}
 
 \begin{definition}
-  Пусть $X$ -- метрическое пространство, $x \in X,\, r > 0$:
-  \begin{itemize}
-    \item Открытым шаром называется множество 
-    \[
-      B(x,\, r) := \{y \in X \:\vert\: \rho(y,\,x) < r\}
-    \]
-    \item Замкнутым шаром называется множество
-    \[
-      \overline{B}(x,\,r) := \{y \in X \:\vert\: \rho(y,\,x) \leq r\}
-    \]
-  \end{itemize}
+	Пусть $X$ -- метрическое пространство, $x \in X,\, r > 0$:
+	\begin{itemize}
+		\item Открытым шаром называется множество
+		      \[
+			      B(x,\, r) := \{y \in X \:\vert\: \rho(y,\,x) < r\}
+		      \]
+		\item Замкнутым шаром называется множество
+		      \[
+			      \overline{B}(x,\,r) := \{y \in X \:\vert\: \rho(y,\,x) \leq r\}
+		      \]
+	\end{itemize}
 \end{definition}
 
 \begin{definition}
-  Пусть $X$ -- метрическое пространство, $M \subset X$. Точка $x \in X$ называется внутренней точкой множества $M$ , если существует $r > 0$ такое, что $B(x,\, r) \subset M$. Внутренностью множества $M$ называется множество $\text{int }M$ всех его внутренних точек. Множество $M$ называется открытым, если $\text{int }M = M$.
+	Пусть $X$ -- метрическое пространство, $M \subset X$. Точка $x \in X$ называется внутренней точкой множества $M$ , если существует $r > 0$ такое, что $B(x,\, r) \subset M$. Внутренностью множества $M$ называется множество $\text{int }M$ всех его внутренних точек. Множество $M$ называется открытым, если $\text{int }M = M$.
 \end{definition}
 
 \begin{definition}
-  Пусть $(X,\, \rho)$ -- метрическое пространство, $M \subset X$. Точка $x \in X$ называется точкой прикосновения множества $M$, если для любого $r > 0$ выполнено условие $B(x,\, r) \cap M \neq \emptyset$. Замыканием множества $M$ называется множество $\overline{M}$ всех его точек прикосновения. Множество $M$ называется замкнутым, если $\overline{M} = M$.
+	Пусть $(X,\, \rho)$ -- метрическое пространство, $M \subset X$. Точка $x \in X$ называется точкой прикосновения множества $M$, если для любого $r > 0$ выполнено условие $B(x,\, r) \cap M \neq \emptyset$. Замыканием множества $M$ называется множество $\overline{M}$ всех его точек прикосновения. Множество $M$ называется замкнутым, если $\overline{M} = M$.
 \end{definition}
 
 \begin{definition}
-  Пусть $X$ -- метрическое пространство. Множество $A \subset X$ называется:
-  \begin{itemize}
-    \item Плотным в множестве $B \subset X$, если $B \subset \overline{A}$
-    \item Всюду плотным, если $X = \overline{A}$
-  \end{itemize}
+	Пусть $X$ -- метрическое пространство. Множество $A \subset X$ называется:
+	\begin{itemize}
+		\item Плотным в множестве $B \subset X$, если $B \subset \overline{A}$
+		\item Всюду плотным, если $X = \overline{A}$
+	\end{itemize}
 \end{definition}
 
 \begin{definition}
-  Метрическое пространство $X$ называется сепарабельным, если в $X$ существует не более чем счётное всюду плотное множество.
+	Метрическое пространство $X$ называется сепарабельным, если в $X$ существует не более чем счётное всюду плотное множество.
 \end{definition}
 
 \begin{definition}
-  Пусть $X$ -- метрическое пространство. Последовательность $\{x_n\} \subset X$ сходится к точке $x \in X$, если $\rho(x_n,\, x) \to 0$ при $n \to +\infty$. Обозначение: 
-  \[
-    x_n \to_X x
-  \]
+	Пусть $X$ -- метрическое пространство. Последовательность $\{x_n\} \subset X$ сходится к точке $x \in X$, если $\rho(x_n,\, x) \to 0$ при $n \to +\infty$. Обозначение:
+	\[
+		x_n \to_X x
+	\]
 \end{definition}
 
 \begin{definition}
-  Пусть $X,\, Y$ -- метрические пространства. $f :\: X \to Y$. Отображение $f$ называется непрерывным в точке $x \in X$, если выполнено одно из следующих условий:
-  \begin{enumerate}
-    \item Для любого $\varepsilon > 0$ существует $\delta > 0$ такое, что $f(B(x,\, \delta)) \subset B(f(x),\, \varepsilon)$
-    \item Для любой $\{x_n\} \subset X$ такой, что $x_n \to_X x$, выполнено $f(x_n) \to_Y f(x)$
-  \end{enumerate}
+	Пусть $X,\, Y$ -- метрические пространства. $f :\: X \to Y$. Отображение $f$ называется непрерывным в точке $x \in X$, если выполнено одно из следующих условий:
+	\begin{enumerate}
+		\item Для любого $\varepsilon > 0$ существует $\delta > 0$ такое, что $f(B(x,\, \delta)) \subset B(f(x),\, \varepsilon)$
+		\item Для любой $\{x_n\} \subset X$ такой, что $x_n \to_X x$, выполнено $f(x_n) \to_Y f(x)$
+	\end{enumerate}
 \end{definition}
 
 \subsection{Несложные утверждения}
 
 \begin{lemma}
-  Неравенство Минсковского.
+	Неравенство Минсковского.
 
-  Пусть $E$ -- измеримое множество, на котором задана мера $\mu$, и пусть $f,\,g :\: E \to \mathbb{R}$ -- измеримые функции. Тогда выполнено следующее:
-  \[
-    \left(\int_E \vert f(x) + g(x)\vert^pd\mu\right)^{\frac{1}{p}} \leq \left(\int_E \vert f(x)\vert^p d\mu\right)^{\frac{1}{p}} + \left(\int_E \vert g(x)\vert^pd\mu\right)^{\frac{1}{p}}
-  \]
+	Пусть $E$ -- измеримое множество, на котором задана мера $\mu$, и пусть $f,\,g :\: E \to \mathbb{R}$ -- измеримые функции. Тогда выполнено следующее:
+	\[
+		\left(\int_E \vert f(x) + g(x)\vert^pd\mu\right)^{\frac{1}{p}} \leq \left(\int_E \vert f(x)\vert^p d\mu\right)^{\frac{1}{p}} + \left(\int_E \vert g(x)\vert^pd\mu\right)^{\frac{1}{p}}
+	\]
 \end{lemma}
 
 \begin{lemma}
-  Неравенство Гёльдера.
+	Неравенство Гёльдера.
 
-  Пусть $E$ измеримое множество, на котором задана мера $\mu$. Тогда для любых $p,\,q \geq 1,\, \frac{1}{p} + \frac{1}{q} = 1$, если $f \in L^p(E),\, g \in L^q(E)$, то $f \cdot g \in L^1$, причём выполнено следующее:
-  \[
-    \int_E \vert f(x)g(x) \vert d\mu \leq \left(\int_E \vert f(x)\vert d\mu\right)^{\frac{1}{p}} \cdot \left(\int_E \vert g(x) \vert d\mu\right)^{\frac{1}{q}}
-  \]
+	Пусть $E$ измеримое множество, на котором задана мера $\mu$. Тогда для любых $p,\,q \geq 1,\, \frac{1}{p} + \frac{1}{q} = 1$, если $f \in L^p(E),\, g \in L^q(E)$, то $f \cdot g \in L^1$, причём выполнено следующее:
+	\[
+		\int_E \vert f(x)g(x) \vert d\mu \leq \left(\int_E \vert f(x)\vert d\mu\right)^{\frac{1}{p}} \cdot \left(\int_E \vert g(x) \vert d\mu\right)^{\frac{1}{q}}
+	\]
 \end{lemma}
 
 \begin{lemma}
-  Пусть $X$ -- метрическое пространство, $M \subset X$. Тогда множество $M$ открыто $\Leftrightarrow$ множество $X \setminus M$ замкнуто.
+	Пусть $X$ -- метрическое пространство, $M \subset X$. Тогда множество $M$ открыто $\Leftrightarrow$ множество $X \setminus M$ замкнуто.
 \end{lemma}
 
 \begin{proof}
-  Достаточно заметить, что
-  \[
-    x \in \overline{X \setminus M} \Leftrightarrow \forall r > 0 :\: B(x,\, r) \cap (X \setminus M) \neq \emptyset \Leftrightarrow x \not\in \text{int }M
-  \]
-  Значит, $\text{int }M = M \Leftrightarrow \overline{X \setminus M} = X \setminus M$.
+	Достаточно заметить, что
+	\[
+		x \in \overline{X \setminus M} \Leftrightarrow \forall r > 0 :\: B(x,\, r) \cap (X \setminus M) \neq \emptyset \Leftrightarrow x \not\in \text{int }M
+	\]
+	Значит, $\text{int }M = M \Leftrightarrow \overline{X \setminus M} = X \setminus M$.
 \end{proof}
 
 \begin{lemma}
-  Пусть $X$ -- метрическое пространство. Тогда:
-  \begin{enumerate}
-    \item Для любого $x \in X$ и $r > 0$ множество $B(x,\,r)$ -- открытое.
-    \item Для любого $x \in X$ и $r > 0$ множество $\overline{B}(x,\,r)$ -- замкнутое.
-    \item Для любого множества $M \subset X$ множество $\text{int }M$ -- открытое, причём наибольшее по включение открытое множество, содержащееся в $M$.
-    \item Для любого множества $M \subset X$ множество $\overline{M}$ -- замкнутое, причём наименьшее по включению замкнутое множество, содержащее $M$.
-  \end{enumerate}
+	Пусть $X$ -- метрическое пространство. Тогда:
+	\begin{enumerate}
+		\item Для любого $x \in X$ и $r > 0$ множество $B(x,\,r)$ -- открытое.
+		\item Для любого $x \in X$ и $r > 0$ множество $\overline{B}(x,\,r)$ -- замкнутое.
+		\item Для любого множества $M \subset X$ множество $\text{int }M$ -- открытое, причём наибольшее по включение открытое множество, содержащееся в $M$.
+		\item Для любого множества $M \subset X$ множество $\overline{M}$ -- замкнутое, причём наименьшее по включению замкнутое множество, содержащее $M$.
+	\end{enumerate}
 \end{lemma}
 
 \begin{proof}
-  \begin{enumerate}
-    \item Пусть $y \in B(x,\,r)$, тогда, по неравенству треугольника, $B(y,\, r - \rho(x,\,y)) \subset B(x,\,r)$, то есть $y \in \text{int }B(x,\,r)$.
-    \item Пусть $y \in \overline{\overline{B}(x,\,r)}$, тогда для любого $\varepsilon > 0$ выполнено $B(y,\,\varepsilon) \cap \overline{B}(x,\,r) \neq \emptyset$, откуда, по неравенству треугольника, $\rho(x,\,y) < r + \varepsilon$. В силу произвольности числа $\varepsilon$, получаем, что $\rho(x,\,y) \leq r$, то есть $y \in \overline{B}(x,\,r)$.
-    \item Для любого открытого множества $G \subset M$ выполнено $G = \text{int G} \subset \text{int M}$, поэтому, в частности, множество $\text{int M}$ открыто, как объединение всех содержащихся в $M$ открытых множеств.
-    \item Для любого замкнутого множества $F \supset M$ выполнено $F = \overline{F} \supset \overline{M}$, поэтому, в частности, множество $\overline{M}$ замкнуто, как пересечение всех содержащих $M$ замкнутых множеств.
-  \end{enumerate}
+	\begin{enumerate}
+		\item Пусть $y \in B(x,\,r)$, тогда, по неравенству треугольника, $B(y,\, r - \rho(x,\,y)) \subset B(x,\,r)$, то есть $y \in \text{int }B(x,\,r)$.
+		\item Пусть $y \in \overline{\overline{B}(x,\,r)}$, тогда для любого $\varepsilon > 0$ выполнено $B(y,\,\varepsilon) \cap \overline{B}(x,\,r) \neq \emptyset$, откуда, по неравенству треугольника, $\rho(x,\,y) < r + \varepsilon$. В силу произвольности числа $\varepsilon$, получаем, что $\rho(x,\,y) \leq r$, то есть $y \in \overline{B}(x,\,r)$.
+		\item Для любого открытого множества $G \subset M$ выполнено $G = \text{int G} \subset \text{int M}$, поэтому, в частности, множество $\text{int M}$ открыто, как объединение всех содержащихся в $M$ открытых множеств.
+		\item Для любого замкнутого множества $F \supset M$ выполнено $F = \overline{F} \supset \overline{M}$, поэтому, в частности, множество $\overline{M}$ замкнуто, как пересечение всех содержащих $M$ замкнутых множеств.
+	\end{enumerate}
 \end{proof}
 
 \begin{lemma}
-  Пусть $X,\, Y$ -- метрические пространства, $f :\: X \to Y$. Тогда следующие условия эквивалентны:
-  \begin{itemize}
-    \item Отображение $f$ непрерывно.
-    \item Для любого открытого множества $G \subset Y$ множество $f^{-1}(G)$ тоже является открытм
-  \end{itemize}
+	Пусть $X,\, Y$ -- метрические пространства, $f :\: X \to Y$. Тогда следующие условия эквивалентны:
+	\begin{itemize}
+		\item Отображение $f$ непрерывно.
+		\item Для любого открытого множества $G \subset Y$ множество $f^{-1}(G)$ тоже является открытм
+	\end{itemize}
 \end{lemma}
 
 \begin{proof}
-  \begin{itemize}
-    \item ($1 \Rightarrow 2$) Зафиксируем произвольное открытое множество $G \subset Y$. Тогда, поскольку выполнено равенство $f^{-1}(G) = \bigcup_{y \in G}f^{-1}(y)$ и каждое множество $f^{-1}(y)$ является открытым (из определения непрерывности), множество $f^{-1}(G)$ тоже является открытым.
-    \item ($2 \Rightarrow 1$) Зафиксируем произвольные $x \in X,\, \varepsilon >0$. Множество $B(f(x),\, \varepsilon)$ является открытым, поэтому его прообраз тоже открыт, то есть существует $\delta >0$ такое, что $f(B(x,\, \delta)) \subset B(f(x),\, \varepsilon)$, что и даёт требуемое в силу произвольности выбора точки $x$ и числа $\varepsilon$.
-  \end{itemize}
+	\begin{itemize}
+		\item ($1 \Rightarrow 2$) Зафиксируем произвольное открытое множество $G \subset Y$. Тогда, поскольку выполнено равенство $f^{-1}(G) = \bigcup_{y \in G}f^{-1}(y)$ и каждое множество $f^{-1}(y)$ является открытым (из определения непрерывности), множество $f^{-1}(G)$ тоже является открытым.
+		\item ($2 \Rightarrow 1$) Зафиксируем произвольные $x \in X,\, \varepsilon >0$. Множество $B(f(x),\, \varepsilon)$ является открытым, поэтому его прообраз тоже открыт, то есть существует $\delta >0$ такое, что $f(B(x,\, \delta)) \subset B(f(x),\, \varepsilon)$, что и даёт требуемое в силу произвольности выбора точки $x$ и числа $\varepsilon$.
+	\end{itemize}
+\end{proof}
+
+\section{Полные метрические пространства}
+\subsection{Теорема о вложенных шарах, теорема Бэра}
+\begin{definition}
+	Пусть $X$ -- метрическое пространство. Последовательность $\{x_n\} \subset X$ называется фундаментальной, если выполнено следующее условие:
+	\[
+		\forall \varepsilon > 0 \: \exists N \in \mathbb{N} \: \forall n,\,m \geq N :\: \rho(x_n,\, x_m) < \varepsilon
+	\]
+\end{definition}
+
+\begin{definition}
+	Метрическое пространство называется полным, если любая фундаментальная последовательность в нём сходится.
+\end{definition}
+
+\begin{theorem}
+	О вложенных шарах.
+
+	Пусть $X$ -- полное метрическое пространство. $\{\overline{B}(x_n,\, r_n)\}_{n = 1}^\infty$ -- последовательность вложенных замкнутых шаров такая, что $r_n \to 0$. Тогда $\bigcap_{n = 1}^\infty \overline{B}(x_n,\, r_n) = \{x^*\}$ для некоторой точки $x^* \in X$.
+\end{theorem}
+
+\begin{proof}
+	В силу вложенности шаров и условия $r_n \to 0$, последовательность $\{x_n\}_{n=1}^\infty$ фундаментальна. Тогда, поскольку пространство $X$ полно, для некоторого $x^* \in X$ выполнено $x_n \to x^*$. Но каждый шар $\overline{B}(x_N,\, r_N)$ содержит все точки из последовательности $\{x_n\}_{n = 1}^\infty$, начиная с номера $N$, тогда, в силу его замкнутости, он также содержит точку $x^*$.
+
+	Значит, $\{x^*\} \subset \bigcap_{n = 1}^\infty \overline{B}(x_n,\, r_n)$. Наконец, в силу условия $r_n \to +0$, других точек в пересечении быть не может.
+\end{proof}
+
+\begin{theorem}
+	Теорема Бэра.
+
+	Пусть $X$ -- полное метрическое пространство. Тогда $X$ нельзя представить в виде $X = \bigcup_{n = 1}^\infty M_n$, где множества $M_n \subset X$ -- не плотные ни в одном шаре в $X$ (нигде не плотные).
+\end{theorem}
+
+\begin{proof}
+	Предположим противное, то есть $X$ имеет такой вид, как в условии. Положим $r_0 := 1$ и выберем произвольный шар $\overline{B}(x_0,\, r_0) \subset X$. Поскольку $M_1$ неплотно в $\overline{B}(x_0,\, r_0)$, то
+	\[
+		(X \setminus \overline{M}_1) \cap B(x_0,\, r_0) \neq \emptyset
+	\], поэтому можно выбрать шар
+	\[
+		\overline{B}(x_1,\, r_1) \subset \overline{B}(x_0,\, r_0) :\: \overline{B}(x_1,\, r_1) \cap \overline{M}_1 = \emptyset
+	\]
+	Можно считать, что $r_1 \leq \frac{1}{2}$. Повторим данное упражнение счётное количество раз\dots
+
+	Рассмотрим полученную последовательность вложенных шаров $\{\overline{B}(x_n,\,r_n)\}_{n = 1}^\infty$. Поскольку $r_n \leq \frac{1}{2^n} \to 0$, то, по предыдущей теореме, для некоторой точки $x^* \in X$ выполнено равенство
+	\[
+		\{x^*\} = \cap_{n = 0}^\infty\overline{B}(x_n,\, r_n)
+	\]
+	По предположению, $X = \cup M_n$, поэтому $\exists n :\: x^* \in M_n$, но по построению
+	\[
+		\overline{B}(x^*,\, r_n) \cap \overline{M}_n = \emptyset
+	\]
+	противоречие.
+\end{proof}
+
+\subsection{Принцип сжимающих отображений.}
+\begin{theorem}
+	Теорема Банаха. Принцип сжимающих отображений.
+
+	Пусть $X$ -- полное метрическое пространство, $f :\: X \to X$ -- отображение такое, что выполнено следующее условие:
+	\[
+		\exists \alpha \in (0,\, 1) \: \forall x,\, y \in X :\: \rho(f(x),\, f(y)) \leq \alpha\rho(x,\,y)
+	\]
+	Тогда
+	\[
+		\exists ! x^* :\: f(x^*) = x^*
+	\]
+\end{theorem}
+
+\begin{proof}
+	Существование. Зафиксируем $x_0 \in X$ и рассмотрим последовательность $\{x_n\}_{n = 1}^\infty$, где $x_{n + 1} = f(x_n)$. Поскольку для $k \in \mathbb{N}$ выполнено:
+	\[
+		\rho(x_{k + 1},\, x_k) = \rho(f(x_k),\, f(x_{k - 1})) \leq \alpha\rho(x_k,\, x_{k - 1}) = \alpha\rho(f(x_{k - 1},\, f(x_{k - 2}))) \leq \cdots \leq \alpha^k\rho(x_1,\, x_0)
+	\]
+	то по неравенству треугольника получаем
+	\[
+		\rho(x_{n + p},\, x_n) \leq \rho(x_{n + p},\, x_{n + p - 1}) + \cdots + \rho(x_{n + 1},\, x_n) \leq (\alpha^{n + p - 1} + \cdots + \alpha^n) \rho(x_1,\, x_0) \leq \frac{\alpha^n}{1 - \alpha}\rho(x_1,\, x_0)
+	\]
+	Так как $\alpha^n \overset{n \to +\infty}{\to} 0$, то $\{x_n\}_{n = 1}^\infty$ фундаментальна. Значит, из полноты пространства,
+	\[
+		\exists \lim_{n \to +\infty} x_n = x^*
+	\]
+	Переходя к пределу в равенстве $x_{n + 1} = f(x_n)$ и пользуясь непрерывностью $f$, получаем $f(x^*) = x^*$.
+
+	Единственность. Предположим, что
+	\[
+		\exists y^* \neq x^* :\: f(y^*) = y^* \Rightarrow \rho(x^*,\, y^*) = \rho(f(x^*),\, f(y^*)) \leq \alpha\rho(x^*,\, y^*)
+	\]
+	Это возможно лишь когда $\rho(x^*,\, y^*) = 0 \Rightarrow x^* = y^*$.
+\end{proof}
+
+\section{Компактные метрические пространства}
+\subsection{Компактность и центрированные системы замкнутых множеств}
+\begin{definition}
+	Метрическое пространство $X$ называется компактным, если
+	\[
+		\forall \{G_\alpha\}_{\alpha \in \mathcal{A}} \subset 2^X :\: \bigcup_{\alpha \in \mathcal{A}} G_\alpha = X :\: \exists \{\alpha_i\}_{i = 1}^n \subset \mathcal{A} :\: \bigcup_{i = 1}^n G_{\alpha_i} = X
+	\]
+\end{definition}
+
+\begin{definition}
+	Пусть $X$ -- метрическое пространство. Система $\{B_\alpha\}_{\alpha \in \mathcal{A}} \subset 2^X$ называется центрированной, если
+	\[
+		\forall \{\alpha_i\}_{i=1}^n \subset \mathcal{A} :\: \bigcap_{i = 1}^n B_{\alpha_i} \neq \emptyset
+	\]
+\end{definition}
+
+\begin{theorem}
+	Метрическое пространство $X$ компактно $\Leftrightarrow$ любая центрированная система замкнутых множеств в $X$ имеет непустое пересечение.
+\end{theorem}
+
+\begin{proof}
+	Каждой системе открытых множеств $\{G_\alpha\}_{\alpha \in \mathcal{A}} \subset 2^X$ можно поставить в соответствие систему замкнутых множеств $\{F_\alpha\}_{\alpha \in \mathcal{A}} := \{X \setminus G_\alpha\}_{\alpha \in \mathcal{A}}$ и наоборот.
+
+	Тогда любая система открытых множеств $\{G_\alpha\}_{\alpha \in \mathcal{A}}$, не содержащая конечного подпокрытия, не является покрытием $\Leftrightarrow$ любая центрированная система замкнутых множеств $\{F_\alpha\}_{\alpha \in \mathcal{A}}$ имеет непустое пересечение (накиньте на одну из частей утверждения дополнения и поймите, что это одно и то же).
+\end{proof}
+
+\subsection{Критерий компактности}
+\begin{definition}
+	Пусть $M$ -- некоторое множество в метрические пространстве $R$. Тогда множества $A$ из $R$ называется $\varepsilon$-сетью для $M$, если
+	\[
+		\forall x \in M \: \exists a \in A :\: \rho(x,\, a) \leq \varepsilon
+	\]
+\end{definition}
+
+\begin{definition}
+	Множество $M$ в метрическом пространстве $R$ называется ограниченным, если существует $B_\varepsilon(x_0)$ содержащий $M$.
+\end{definition}
+
+\begin{definition}
+	Множество $M$ в метрическом пространстве $R$ называется вполне ограниченным, если для него при любом $\varepsilon > 0$ существует конечная $\varepsilon$-сеть.
+\end{definition}
+
+\begin{lemma}
+	Из вполне ограниченности следует ограниченность.
+\end{lemma}
+
+\begin{proof}
+	Из вполне ограниченности ограниченность следует получается, как объединение конечного числа ограниченных множеств.
+\end{proof}
+
+\begin{theorem}
+	Критерий компактности.
+
+	Пусть $X$ -- метрическое пространство. Тогда следующие условия эквивалентны:
+	\begin{enumerate}
+		\item $X$ компактно.
+		\item $X$ полно и вполне ограниченно.
+		\item Из любой последовательности $\{x_n\}_{n = 1}^\infty \subset X$ можно выделить сходящуюся подпоследовательность $\{x_{n_k}\}_{k = 1}^\infty$, ещё говорят, что $X$ -- секвенциально компактно.
+		\item Любое бесконечное множество $M \subset X$ имеет предельную точку.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{itemize}
+		\item ($1 \Rightarrow 2$) $X$ вполне ограниченно, поскольку для любого $\varepsilon > 0$ из открытого покрытия $\{B(x,\, \varepsilon)\}_{x \in X}$ по определению можно выделить конечное подпокрытие. Центры шаров этого подпокрытия и будут давать требуемую $\varepsilon$-сеть.
+
+		      Пусть последовательность $\{x_n\} \subset X$ фундаментальна. Для каждого $n \in \mathbb{N}$ положим $A_n := \{x_n,\, x_{n + 1},\, \cdots\}$, тогда система $\{\overline{A}_n\}$ является центрированной системой замкнутых множеств. Система центрирована, потому что у любого конечного набора пересечением будет являться хвост, начинающийся с максимального из взятых индексов.
+
+		      Поэтому можно выбрать точку $x_0 \in \cap_{n \in \mathbb{N}_+} \overline{A}_n$, причём $x_0 \in X$ по рассмотренному выше критерию компактности. В силу фундаментальности
+		      \[
+			      \forall \varepsilon > 0 \: \exists N \in \mathbb{N} \: \forall n > N :\: \overline{A}_n \subset \overline{B}(x_N,\, \varepsilon)
+		      \]
+		      откуда и $\rho(x_n,\, x_0) < \varepsilon \Rightarrow x_n \to_X x_0$.
+		\item ($2 \Rightarrow 3$) Зафиксируем произвольную последовательность $\{x_n\}_{n = 1}^\infty \subset X$. Поскольку $X$ вполне ограниченно, то
+		      \[
+			      \forall \varepsilon > 0 \: \exists y \in X :\: \vert\{x_n\}_{n = 1}^\infty \cap B(y,\, \varepsilon)\vert = +\infty
+		      \]
+		      Будем применять это рассуждение сначала для всего пространства $X$, потом для шаров в $X$, содержащих бесконечно много точек из $\{x_n\}_{n = 1}^\infty$:
+		      \begin{itemize}
+			      \item Для $\varepsilon := 1$ выберем $\{x_k^1\} \subset \{x_n\}$ так, что $\{x_k^1\} \subset B(y_1,\, 1)$
+			      \item Для $\varepsilon := \frac{1}{2}$ выберем $\{x_k^2\} \subset \{x_n^1\} \subset B(y_1,\, 1)$ так, что $\{x_k^2\} \subset B(y_2,\, \frac{1}{2})$
+			      \item \dots
+		      \end{itemize}
+		      Рассмотрим диагональную последовательность $\{x_k^k\} \subset \{x_n\}$. По построению, она является фундаментальной, и в силу полноты пространства $X$, она сходится.
+		\item ($3 \Rightarrow 1$) Проверим сначала, что $X$ вполне ограниченно. Предположим противное, то есть
+		      \[
+			      \exists \varepsilon_0 > 0 \: \forall \{\overline{B}(y_n,\, \varepsilon_0)\}_{n = 1}^N :\: \bigcup_{n = 1}^N \overline{B}(y_n,\, \varepsilon_0) \not\supset X
+		      \]
+		      Тогда можно выбрать точку $x_1 \in X$, затем точку $x_2 \in (X \setminus B(x_1,\, \varepsilon_0))$. По предположению, остаток, из которого берём элементы последовательности, никогда не будет пуст, поэтому получим последовательности с попарными расстояниями между точками не меньше $\varepsilon_0$, из которой, очевидно, нельзя выделить сходящуюся подпоследовательность -- противоречие.
+
+		      Теперь проверим, что $X$ компактно. Предположим противное, то есть
+		      \[
+			      \exists \{G_\alpha\}_{\alpha \in \mathcal{A}},\, G_\alpha \text{ - открытое} \: \forall \{G_{\alpha_i}\}_{i = 1}^N :\: \bigcup_{i = 1}^N  G_{\alpha_i} \not\supset X
+		      \]
+		      Значит,
+		      \[
+			      \forall \varepsilon > 0 \: \exists x \in X  \: \forall \{G_{\alpha_i}\}_{i = 1}^N :\: \bigcup_{i = 1}^N  G_{\alpha_i} \not\supset B (x,\, \varepsilon)
+		      \]
+		      (если такого шара нет, то из вполне ограниченности, складывая конечные покрытия конечного числа шаров, получим конечное покрытие всего множества).
+
+		      Выбирая такую точку $x_n$ для $\varepsilon := \frac{1}{n}$ при каждом $n \in \mathbb{N}$, получим последовательность $\{x_n\}_{n = 1}^\infty$, из которой можно выделить сходящуюся подпоследовательность $\{x_{n_k}\}_{k = 1}^\infty$. Пусть $x_{n_k} \to_X x_0 \in X$.
+		      Тогда существует $\alpha_0 \in \mathcal{A}$ такое, что $x_0 \in G_{\alpha_0}$. Но множество $G_{\alpha_0}$ открыто, поэтому оно покрывает некоторую окрестность точки $x_0$, а значит и все шары $B(x_{n_k},\, \frac{1}{n_k})$, начиная с некоторого номера -- противоречие.
+		\item ($3 \Rightarrow 4$) Зафиксируем бесконечное множество $M \subset X$, тогда, выбирая произвольным образом последовательность $\{x_n\} \subset M$ и выделяя из неё сходящуюся подпоследовательность, получим требуемое.
+		\item ($4 \Rightarrow 3$) Зафиксируем последовательность $\{x_n\}_{n = 1}^\infty$. Если множество её значений конечно, то в ней можно выделить стационарную подпоследовательность. Если же множество её значений бесконечно, то оно имеет предельную точку $x_0 \in X$, поэтому можно выбрать подпоследовательность $\{x_{n_k}\}$ такую, что $x_{n_k} \to_X x_0$
+	\end{itemize}
+\end{proof}
+
+\subsection{Теорема Арцела-Асколи}
+\begin{definition}
+	Обозначим за $C(X,\, Y)$ множество непрерывных функций $f:\: X \to Y$.
+\end{definition}
+
+\begin{theorem}
+	Теорема Кантора.
+
+	Пусть $X$ -- компактное метрическое пространство, и функция $f \in C(X,\, \mathbb{R})$. Тогда $f$ равномерно непрерывна на $X$.
+\end{theorem}
+
+\begin{proof}
+	Предположим противное, то есть выполнено следующее:
+	\[
+		\exists \varepsilon_0 > 0 \: \forall \delta > 0 \: \exists x,\,y \in X,\, \rho(x,\, y) < \delta :\: \vert f(x) - f(y)\vert \geq \varepsilon_0
+	\]
+	Выбирая $\delta := \frac{1}{n}$ для каждого $n \in \mathbb{N}$, получим последовательности $\{x_n\},\, \{y_n\}$. Поскольку $X$ компактно, можно выделить из них сходящиеся подпоследовательности $\{x_{n_k}\},\, \{y_{n_k}\}$, причём сходятся они к одной и той же точке $x_0 \in X$ по построению. Однако для любого $k \in \mathbb{N}$ выполнено $\vert f(x_{n_k}) - f(y_{n_k})\vert \geq \varepsilon_0$ -- противоречие.
+\end{proof}
+
+\begin{theorem}
+	Арцела-Асколи.
+
+	Пусть $X$ -- компактное метрическое пространство, $M \subset C(X,\, \mathbb{R})$. Тогда множество $M$ вполне ограниченно $\Leftrightarrow$ множество $M$ ограниченно и выполнено условие равностепенной непрерывности:
+	\[
+		\forall \varepsilon > 0 :\: \exists \delta > 0 :\: \forall x,\, y \in X,\, \rho(x,\, y) < \delta :\: \forall f \in M :\: \vert f(x) - f(y)\vert < \varepsilon
+	\]
+\end{theorem}
+
+\begin{proof}
+	($\Rightarrow$) Мы уже доказывали, что из вполне ограниченности следует обычная ограниченность, проверим условие равностепенной непрерывности. Зафиксируем произвольное $\varepsilon > 0$ и выберем конечным набор функций $\phi_1,\,\cdots,\,\phi_n \in C(X,\, \mathbb{R})$, образующий $\varepsilon$-сеть.
+
+	По теореме Кантора, каждая из этих функций равномерно непрерывна. Пусть $\delta_1,\,\cdots,\,\delta_n > 0$ -- числа, соответствующие выбранному $\varepsilon$ в определении равномерной непрерывности:
+	\[
+		\forall \varepsilon > 0 \: \exists \delta_k > 0 \: \forall x,\,y \: \rho(x,\, y) < \delta_k :\: \vert\phi_k(x) -\phi_k(y)\vert < \varepsilon
+	\]
+	Тогда для $\delta := \min\{\delta_1,\,\cdots,\, \delta_n\}$ выполнено требуемое:
+	\[
+		\vert f(x) - f(y)\vert \leq \vert f(x) - \phi_k(x)\vert + \vert \phi_k(x) - \phi_k(y)\vert + \vert \phi_k(y) - f(y)\vert < 3\varepsilon
+	\]
+	($\Leftarrow$) Поскольку множество $M$ ограниченно, то существует $C > 0$ такое, что
+	\[
+    \forall f \in M :\: \|f\| = \sup_{x \in [a,\,b]} \vert f(x)\vert \leq C
+	\]
+  Зафиксируем произвольное $\varepsilon > 0$ и выберем по нему $\delta > 0$ из условия равностепенной непрерывности.
+
+  Разобьём отрезок $[a,\,b]$ на части длины меньше $\delta$ точками 
+  \[
+    a = x_0 < x_1 < \cdots < x_n = b
+  \]
+  , а отрезок $[-C,\, C]$ -- на части длины меньше $\varepsilon$ точками 
+  \[
+    -C = y_0 < y_1 < \cdots < y_m = C
+  \]
+  и рассмотрим конечное множество $L$ кусочно линейных функций, построенных по всевозможным наборам точек вида
+  \[
+    \{(x_j,\, y_{i_k})\}_{j = 0}^n,\, i_k \in \overline{0,\,m}
+  \]
+  Из такого построению становится очевидно, что
+  \[
+    \forall f \in M \: \exists \phi \in L \: \forall i \in \{0,\,\cdots,\,n\} :\: \vert f(x_i) - \phi(x_i)\vert < \varepsilon
+  \]
+  Рассмотрим произвольную точку $x \in [a,\,b]$ и выберем $i \in \{0,\,\cdots,\, n-1\}$ такое, что $x \in [x_i,\, x_{i + 1}]$, тогда:
+  \[
+    \vert f(x) - \phi(x)\vert \leq \vert f(x) - f(x_i)\vert + \vert f(x_i) - \phi(x_i)\vert + \vert \phi(x) - \phi(x_i)\vert < 2\varepsilon + \vert \phi(x) - \phi(x_i)\vert
+  \]
+  Первое слагаемое меньше $\varepsilon$ из равностепенной непрерывности, а второе по построению $\phi$. Оценим слагаемое $\vert \phi(x) - \phi(x_i)\vert$ отдельно:
+  \[
+    \vert \phi(x) - \phi(x_i)\vert \leq \vert f(x_{i + 1}) - \phi(x_{i + 1})\vert + \vert f(x_{i + 1}) - f(x_i)\vert + \vert f(x_i) - \phi(x_i)\vert < 3\varepsilon
+  \]
+  Таким образом, $\sup_{x \in [a,\,b]}\vert f(x) - \phi(x)\vert < 5\varepsilon$. Значит, построенное множество $L$ образует конечную $5\varepsilon$-сеть для множества $M$, тогда, в силу произвольности выбора числа $\varepsilon$, множество $M$ вполне ограниченно.
 \end{proof}
 
 \end{document}
