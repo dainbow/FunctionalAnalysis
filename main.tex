@@ -1,0 +1,213 @@
+\documentclass[a4paper,12pt]{article}
+
+%%% Работа с русским языком
+
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в формулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+\usepackage{indentfirst}            % красная строка в первом абзаце
+\usepackage[unicode]{hyperref}
+\usepackage{epigraph}
+\frenchspacing                      % равные пробелы между словами и предложениями
+
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % пакеты AMS
+\usepackage{bbm} % Blackboard bold для цифр
+\usepackage{icomma}                                    % "Умная" запятая
+
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+\renewcommand{\emptyset}{\ensuremath{\varnothing}}
+
+\newcommand{\cl}{\text{cl }}
+\newcommand{\setint}{\text{int }}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}{Лемма}[section]
+\newtheorem{proposition}{Утверждение}[section]
+\newtheorem*{corollary}{Следствие}
+\newtheorem*{exercise}{Упражнение}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}[section]
+\newtheorem*{note}{Замечание}
+\newtheorem*{reminder}{Напоминание}
+\newtheorem*{example}{Пример}
+\newtheorem*{tasks}{Вопросы и задачи}
+
+\theoremstyle{remark}
+\newtheorem*{solution}{Решение}
+
+%%% Оформление страницы
+\usepackage{extsizes}     % Возможность сделать 14-й шрифт
+\usepackage{geometry}     % Простой способ задавать поля
+\usepackage{setspace}     % Интерлиньяж
+\usepackage{enumitem}     % Настройка окружений itemize и enumerate
+\usepackage{epigraph}     % Эпиграф
+\setlist{leftmargin=25pt} % Отступы в itemize и enumerate
+
+\geometry{top=25mm}    % Поля сверху страницы
+\geometry{bottom=30mm} % Поля снизу страницы
+\geometry{left=20mm}   % Поля слева страницы
+\geometry{right=20mm}  % Поля справа страницы
+
+\begin{document}
+\tableofcontents
+\newpage
+
+\section{Метрические пространства}
+
+\subsection{Определения}
+\begin{definition}
+  Метрическим пространством называется множества $X$ с функцией $\rho :\: X^2 \to \mathbb{R}$, обладающей следующими свойствами:
+  \begin{enumerate}
+    \item $\forall x,\, y \in X :\: \rho(x,\,y) \geq 0$, причём $\rho(x,\,y) = 0 \Leftrightarrow x = y$
+    \item $\forall x,\, y \in X :\: \rho(x,\,y) = \rho(y,\,x)$
+    \item $\forall x,\,y,\,z \in X :\: \rho(x,\, z) = \rho(x,\,y) + \rho(y,\,z)$ (неравенство треугольника).
+  \end{enumerate}
+  Функция $\rho$ называется метрикой на множестве $X$.
+\end{definition}
+
+\begin{definition}
+  Топологическим пространством называется множество $X$ с системой $\tau \subseteq 2^X$, обладающей следующими свойствами:
+  \begin{enumerate}
+    \item $\emptyset,\, X \in \tau$
+    \item $\forall G_1,\, G_2 \in \tau :\: G_1 \cap G_2 \in \tau$
+    \item $\forall \{G_\alpha\}_{\alpha \in \mathcal{A}} \subset \tau :\: \bigcup_{\alpha \in \mathcal{A}} G_\alpha \in \tau$
+  \end{enumerate}
+  Система $\tau$ называется топологией на множестве $X$, а элементы системы $\tau$ -- открытыми множествами.
+\end{definition}
+
+\begin{definition}
+  Пусть $X$ -- метрическое пространство, $Y \subset X$. Подстранством пространства $X$ называется метрическое пространство $Y$ с метрикой, являющейся сужением метрики на $X$.
+\end{definition}
+
+\begin{definition}
+  Пусть $X$ -- метрическое пространство. Множество $Y \subset X$ называется ограниченным, если выполнено условие $\sup_{x,\, y \in Y}\rho(x,\,y) < +\infty$
+\end{definition}
+
+\begin{definition}
+  Пусть $X$ -- метрическое пространство, $x \in X,\, r > 0$:
+  \begin{itemize}
+    \item Открытым шаром называется множество 
+    \[
+      B(x,\, r) := \{y \in X \:\vert\: \rho(y,\,x) < r\}
+    \]
+    \item Замкнутым шаром называется множество
+    \[
+      \overline{B}(x,\,r) := \{y \in X \:\vert\: \rho(y,\,x) \leq r\}
+    \]
+  \end{itemize}
+\end{definition}
+
+\begin{definition}
+  Пусть $X$ -- метрическое пространство, $M \subset X$. Точка $x \in X$ называется внутренней точкой множества $M$ , если существует $r > 0$ такое, что $B(x,\, r) \subset M$. Внутренностью множества $M$ называется множество $\text{int }M$ всех его внутренних точек. Множество $M$ называется открытым, если $\text{int }M = M$.
+\end{definition}
+
+\begin{definition}
+  Пусть $(X,\, \rho)$ -- метрическое пространство, $M \subset X$. Точка $x \in X$ называется точкой прикосновения множества $M$, если для любого $r > 0$ выполнено условие $B(x,\, r) \cap M \neq \emptyset$. Замыканием множества $M$ называется множество $\overline{M}$ всех его точек прикосновения. Множество $M$ называется замкнутым, если $\overline{M} = M$.
+\end{definition}
+
+\begin{definition}
+  Пусть $X$ -- метрическое пространство. Множество $A \subset X$ называется:
+  \begin{itemize}
+    \item Плотным в множестве $B \subset X$, если $B \subset \overline{A}$
+    \item Всюду плотным, если $X = \overline{A}$
+  \end{itemize}
+\end{definition}
+
+\begin{definition}
+  Метрическое пространство $X$ называется сепарабельным, если в $X$ существует не более чем счётное всюду плотное множество.
+\end{definition}
+
+\begin{definition}
+  Пусть $X$ -- метрическое пространство. Последовательность $\{x_n\} \subset X$ сходится к точке $x \in X$, если $\rho(x_n,\, x) \to 0$ при $n \to +\infty$. Обозначение: 
+  \[
+    x_n \to_X x
+  \]
+\end{definition}
+
+\begin{definition}
+  Пусть $X,\, Y$ -- метрические пространства. $f :\: X \to Y$. Отображение $f$ называется непрерывным в точке $x \in X$, если выполнено одно из следующих условий:
+  \begin{enumerate}
+    \item Для любого $\varepsilon > 0$ существует $\delta > 0$ такое, что $f(B(x,\, \delta)) \subset B(f(x),\, \varepsilon)$
+    \item Для любой $\{x_n\} \subset X$ такой, что $x_n \to_X x$, выполнено $f(x_n) \to_Y f(x)$
+  \end{enumerate}
+\end{definition}
+
+\subsection{Несложные утверждения}
+
+\begin{lemma}
+  Неравенство Минсковского.
+
+  Пусть $E$ -- измеримое множество, на котором задана мера $\mu$, и пусть $f,\,g :\: E \to \mathbb{R}$ -- измеримые функции. Тогда выполнено следующее:
+  \[
+    \left(\int_E \vert f(x) + g(x)\vert^pd\mu\right)^{\frac{1}{p}} \leq \left(\int_E \vert f(x)\vert^p d\mu\right)^{\frac{1}{p}} + \left(\int_E \vert g(x)\vert^pd\mu\right)^{\frac{1}{p}}
+  \]
+\end{lemma}
+
+\begin{lemma}
+  Неравенство Гёльдера.
+
+  Пусть $E$ измеримое множество, на котором задана мера $\mu$. Тогда для любых $p,\,q \geq 1,\, \frac{1}{p} + \frac{1}{q} = 1$, если $f \in L^p(E),\, g \in L^q(E)$, то $f \cdot g \in L^1$, причём выполнено следующее:
+  \[
+    \int_E \vert f(x)g(x) \vert d\mu \leq \left(\int_E \vert f(x)\vert d\mu\right)^{\frac{1}{p}} \cdot \left(\int_E \vert g(x) \vert d\mu\right)^{\frac{1}{q}}
+  \]
+\end{lemma}
+
+\begin{lemma}
+  Пусть $X$ -- метрическое пространство, $M \subset X$. Тогда множество $M$ открыто $\Leftrightarrow$ множество $X \setminus M$ замкнуто.
+\end{lemma}
+
+\begin{proof}
+  Достаточно заметить, что
+  \[
+    x \in \overline{X \setminus M} \Leftrightarrow \forall r > 0 :\: B(x,\, r) \cap (X \setminus M) \neq \emptyset \Leftrightarrow x \not\in \text{int }M
+  \]
+  Значит, $\text{int }M = M \Leftrightarrow \overline{X \setminus M} = X \setminus M$.
+\end{proof}
+
+\begin{lemma}
+  Пусть $X$ -- метрическое пространство. Тогда:
+  \begin{enumerate}
+    \item Для любого $x \in X$ и $r > 0$ множество $B(x,\,r)$ -- открытое.
+    \item Для любого $x \in X$ и $r > 0$ множество $\overline{B}(x,\,r)$ -- замкнутое.
+    \item Для любого множества $M \subset X$ множество $\text{int }M$ -- открытое, причём наибольшее по включение открытое множество, содержащееся в $M$.
+    \item Для любого множества $M \subset X$ множество $\overline{M}$ -- замкнутое, причём наименьшее по включению замкнутое множество, содержащее $M$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  \begin{enumerate}
+    \item Пусть $y \in B(x,\,r)$, тогда, по неравенству треугольника, $B(y,\, r - \rho(x,\,y)) \subset B(x,\,r)$, то есть $y \in \text{int }B(x,\,r)$.
+    \item Пусть $y \in \overline{\overline{B}(x,\,r)}$, тогда для любого $\varepsilon > 0$ выполнено $B(y,\,\varepsilon) \cap \overline{B}(x,\,r) \neq \emptyset$, откуда, по неравенству треугольника, $\rho(x,\,y) < r + \varepsilon$. В силу произвольности числа $\varepsilon$, получаем, что $\rho(x,\,y) \leq r$, то есть $y \in \overline{B}(x,\,r)$.
+    \item Для любого открытого множества $G \subset M$ выполнено $G = \text{int G} \subset \text{int M}$, поэтому, в частности, множество $\text{int M}$ открыто, как объединение всех содержащихся в $M$ открытых множеств.
+    \item Для любого замкнутого множества $F \supset M$ выполнено $F = \overline{F} \supset \overline{M}$, поэтому, в частности, множество $\overline{M}$ замкнуто, как пересечение всех содержащих $M$ замкнутых множеств.
+  \end{enumerate}
+\end{proof}
+
+\begin{lemma}
+  Пусть $X,\, Y$ -- метрические пространства, $f :\: X \to Y$. Тогда следующие условия эквивалентны:
+  \begin{itemize}
+    \item Отображение $f$ непрерывно.
+    \item Для любого открытого множества $G \subset Y$ множество $f^{-1}(G)$ тоже является открытм
+  \end{itemize}
+\end{lemma}
+
+\begin{proof}
+  \begin{itemize}
+    \item ($1 \Rightarrow 2$) Зафиксируем произвольное открытое множество $G \subset Y$. Тогда, поскольку выполнено равенство $f^{-1}(G) = \bigcup_{y \in G}f^{-1}(y)$ и каждое множество $f^{-1}(y)$ является открытым (из определения непрерывности), множество $f^{-1}(G)$ тоже является открытым.
+    \item ($2 \Rightarrow 1$) Зафиксируем произвольные $x \in X,\, \varepsilon >0$. Множество $B(f(x),\, \varepsilon)$ является открытым, поэтому его прообраз тоже открыт, то есть существует $\delta >0$ такое, что $f(B(x,\, \delta)) \subset B(f(x),\, \varepsilon)$, что и даёт требуемое в силу произвольности выбора точки $x$ и числа $\varepsilon$.
+  \end{itemize}
+\end{proof}
+
+\end{document}
