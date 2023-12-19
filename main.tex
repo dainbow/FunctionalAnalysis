@@ -110,11 +110,19 @@
 \end{definition}
 
 \begin{definition}
-	Пусть $X$ -- метрическое пространство, $M \subset X$. Точка $x \in X$ называется внутренней точкой множества $M$ , если существует $r > 0$ такое, что $B(x,\, r) \subset M$. Внутренностью множества $M$ называется множество $\text{int }M$ всех его внутренних точек. Множество $M$ называется открытым, если $\text{int }M = M$.
+	Пусть $X$ -- метрическое пространство, $M \subset X$. Точка $x \in X$ называется внутренней точкой множества $M$ , если 
+	\[
+		\exists r > 0 :\: B(x,\, r) \subset M	
+	\]
+	Внутренностью множества $M$ называется множество $\text{int }M$ всех его внутренних точек. Множество $M$ называется открытым, если $\text{int }M = M$.
 \end{definition}
 
 \begin{definition}
-	Пусть $(X,\, \rho)$ -- метрическое пространство, $M \subset X$. Точка $x \in X$ называется точкой прикосновения множества $M$, если для любого $r > 0$ выполнено условие $B(x,\, r) \cap M \neq \emptyset$. Замыканием множества $M$ называется множество $\overline{M}$ всех его точек прикосновения. Множество $M$ называется замкнутым, если $\overline{M} = M$.
+	Пусть $(X,\, \rho)$ -- метрическое пространство, $M \subset X$. Точка $x \in X$ называется точкой прикосновения множества $M$, если
+	\[
+		\forall r > 0 :\: B(x,\, r) \cap M \neq \emptyset
+	\]
+	Замыканием множества $M$ называется множество $\overline{M}$ всех его точек прикосновения. Множество $M$ называется замкнутым, если $\overline{M} = M$.
 \end{definition}
 
 \begin{definition}
@@ -130,7 +138,7 @@
 \end{definition}
 
 \begin{definition}
-	Пусть $X$ -- метрическое пространство. Последовательность $\{x_n\} \subset X$ сходится к точке $x \in X$, если $\rho(x_n,\, x) \to 0$ при $n \to +\infty$. Обозначение:
+	Пусть $X$ -- метрическое пространство. Последовательность $\{x_n\}_{n = 1}^\infty \subset X$ сходится к точке $x \in X$, если $\rho(x_n,\, x) \to 0$ при $n \to +\infty$. Обозначение:
 	\[
 		x_n \to_X x
 	\]
@@ -140,11 +148,39 @@
 	Пусть $X,\, Y$ -- метрические пространства. $f :\: X \to Y$. Отображение $f$ называется непрерывным в точке $x \in X$, если выполнено одно из следующих условий:
 	\begin{enumerate}
 		\item Для любого $\varepsilon > 0$ существует $\delta > 0$ такое, что $f(B(x,\, \delta)) \subset B(f(x),\, \varepsilon)$
-		\item Для любой $\{x_n\} \subset X$ такой, что $x_n \to_X x$, выполнено $f(x_n) \to_Y f(x)$
+		\item Для любой $\{x_n\}_{n = 1}^\infty \subset X$ такой, что $x_n \to_X x$, выполнено $f(x_n) \to_Y f(x)$
 	\end{enumerate}
 \end{definition}
 
 \subsection{Несложные утверждения}
+
+\begin{lemma}
+	Неравенство Гёльдера.
+
+	Пусть $E$ измеримое множество, на котором задана мера $\mu$. Тогда для любых $p,\,q \geq 1,\, \frac{1}{p} + \frac{1}{q} = 1$, если $f \in L^p(E),\, g \in L^q(E)$, то $f \cdot g \in L^1$, причём выполнено следующее:
+	\[
+		\int_E \vert f(x)g(x) \vert d\mu \leq \left(\int_E \vert f(x)\vert d\mu\right)^{\frac{1}{p}} \cdot \left(\int_E \vert g(x) \vert d\mu\right)^{\frac{1}{q}}
+	\]
+\end{lemma}
+
+\begin{proof}
+	Для доказательства воспользуемся неравенством Юнга:
+	\[
+		a,\,b \geq 0,\, 1 < p < +\infty,\, \frac{1}{p} + \frac{1}{q} = 1 \Rightarrow ab \leq \frac{a^p}{p} + \frac{b^q}{q}
+	\]
+	Положим
+	\[
+		A := \left(\int_Ef^pd\mu\right)^{\frac{1}{p}} ;\;\;\;\; B := \left(\int_Eg^qd\mu\right)^{\frac{1}{q}}
+	\]
+	Если $A = 0 \Rightarrow f \overset{\text{п.в.}}{=} 0 \Rightarrow f\cdot g  \overset{\text{п.в.}}{=} 0 \Rightarrow \int_Ef\cdot gd\mu = 0$.
+
+	Если же $A = \infty,\, B > 0$, то $AB = \infty$ и аналогично остальные случаи с бесконечностями.
+
+	Если $0 < A,\, B < \infty \Rightarrow$ по неравенству Юнга имеем:
+	\[
+		\frac{1}{AB}\int_Ef\cdot gd\mu = \int_E\frac{f}{A}\frac{g}{B}d\mu \leq \int_E \left(\frac{1}{p}\left(\frac{f}{A}\right)^p + \frac{1}{q}\left(\frac{g}{B}\right)^q\right)d\mu = \frac{1}{p}\frac{\int_Ef^pd\mu}{A^p} + \frac{1}{q}\frac{\int_Eg^qd\mu}{B^q} = \frac{1}{p} + \frac{1}{q} = 1
+	\]
+\end{proof}
 
 \begin{lemma}
 	Неравенство Минсковского.
@@ -155,14 +191,22 @@
 	\]
 \end{lemma}
 
-\begin{lemma}
-	Неравенство Гёльдера.
-
-	Пусть $E$ измеримое множество, на котором задана мера $\mu$. Тогда для любых $p,\,q \geq 1,\, \frac{1}{p} + \frac{1}{q} = 1$, если $f \in L^p(E),\, g \in L^q(E)$, то $f \cdot g \in L^1$, причём выполнено следующее:
+\begin{proof}
+	Положим
 	\[
-		\int_E \vert f(x)g(x) \vert d\mu \leq \left(\int_E \vert f(x)\vert d\mu\right)^{\frac{1}{p}} \cdot \left(\int_E \vert g(x) \vert d\mu\right)^{\frac{1}{q}}
+		A := \left(\int_Ef^pd\mu\right)^{\frac{1}{p}} ;\;\;\;\; B := \left(\int_Eg^pd\mu\right)^{\frac{1}{p}} ;\;\;\;\; C := \left(\int_E(f + g)^pd\mu\right)^{\frac{1}{p}}
 	\]
-\end{lemma}
+	Будем полагать, что $A,\,B < \infty$. (Иначе неравенство тривиально). Тогда
+	\[
+		(f + g)^p \leq (2\max{f,\,g})^p \leq 2^p(f^p + g^p) \Rightarrow C < \infty
+	\]
+	Тогда введём $q := \frac{p}{p-1}$ и использум неравенство Гёльдера в следующем виде:
+	\begin{align*}
+		C^P = \int_E f(f + g)^{p - 1}d\mu + \int_Eg(f + g)^{p-1}d\mu \overset{\text{Гёльдер}}{\leq}\\
+		\left(\int_E f^pd\mu\right)^{\frac{1}{p}}\cdot\left(\int_E(f + g)^{(p - 1)q}d\mu\right)^{\frac{1}{q}} + \left(\int_Eg^pd\mu\right)^{\frac{1}{p}}\cdot\left(\int_E(f + g)^{(p-1)q}d\mu\right)^{\frac{1}{q}}=\\
+		(A + B)\left(\int_E (f + g)^pd\mu\right)^{\frac{1}{q}} = (A + B)C^{p -1}
+	\end{align*}
+\end{proof}
 
 \begin{lemma}
 	Пусть $X$ -- метрическое пространство, $M \subset X$. Тогда множество $M$ открыто $\Leftrightarrow$ множество $X \setminus M$ замкнуто.
@@ -244,7 +288,7 @@
 \begin{proof}
 	Предположим противное, то есть $X$ имеет такой вид, как в условии. Положим $r_0 := 1$ и выберем произвольный шар $\overline{B}(x_0,\, r_0) \subset X$. Поскольку $M_1$ неплотно в $\overline{B}(x_0,\, r_0)$, то
 	\[
-		(X \setminus \overline{M}_1) \cap B(x_0,\, r_0) \neq \emptyset
+		(X \setminus \overline{M}_1) \cap \overline{B}(x_0,\, r_0) \neq \emptyset
 	\], поэтому можно выбрать шар
 	\[
 		\overline{B}(x_1,\, r_1) \subset \overline{B}(x_0,\, r_0) :\: \overline{B}(x_1,\, r_1) \cap \overline{M}_1 = \emptyset
@@ -293,7 +337,7 @@
 
 	Единственность. Предположим, что
 	\[
-		\exists y^* \neq x^* :\: f(y^*) = y^* \Rightarrow \rho(x^*,\, y^*) = \rho(f(x^*),\, f(y^*)) \leq \alpha\rho(x^*,\, y^*)
+		\exists y^* \neq x^* :\: f(y^*) = y^* \Rightarrow \rho(x^*,\, y^*) = \rho(f(x^*),\, f(y^*)) \overset{f \text{ сжим}}{\leq} \alpha\rho(x^*,\, y^*)
 	\]
 	Это возможно лишь когда $\rho(x^*,\, y^*) = 0 \Rightarrow x^* = y^*$.
 \end{proof}
@@ -303,7 +347,7 @@
 \begin{definition}
 	Метрическое пространство $X$ называется компактным, если
 	\[
-		\forall \{G_\alpha\}_{\alpha \in \mathcal{A}} \subset 2^X :\: \bigcup_{\alpha \in \mathcal{A}} G_\alpha = X :\: \exists \{\alpha_i\}_{i = 1}^n \subset \mathcal{A} :\: \bigcup_{i = 1}^n G_{\alpha_i} = X
+		\forall \{G_\alpha\}_{\alpha \in \mathcal{A}} \subset 2^X,\, G_\alpha \text{ - открытые} :\: \bigcup_{\alpha \in \mathcal{A}} G_\alpha = X :\: \exists \{\alpha_i\}_{i = 1}^n \subset \mathcal{A} :\: \bigcup_{i = 1}^n G_{\alpha_i} = X
 	\]
 \end{definition}
 
@@ -333,7 +377,10 @@
 \end{definition}
 
 \begin{definition}
-	Множество $M$ в метрическом пространстве $R$ называется ограниченным, если существует $B_\varepsilon(x_0)$ содержащий $M$.
+	Множество $M$ в метрическом пространстве $R$ называется ограниченным, если 
+	\[
+		\exists B(x_0,\, \varepsilon) \supset M
+	\] 
 \end{definition}
 
 \begin{definition}
@@ -566,7 +613,7 @@
 \begin{definition}
 	Евклидовым пространством над полем $\mathbb{K}$, где $\mathbb{K} = \mathbb{R}$ или $\mathbb{K} = \mathbb{C}$, называется линейное пространство $E$ над $\mathbb{K}$ с функцией $(\cdot,\, \cdot) :\: E^2 \to \mathbb{K}$, обладающее следующими свойствами:
 	\begin{enumerate}
-		\item $\forall x \in E :\: (x,\, x) \geq 0$, причём $(x,\, x) = 0 \Leftrightarrow$
+		\item $\forall x \in E :\: (x,\, x) \geq 0$, причём $(x,\, x) = 0 \Leftrightarrow x = 0$
 		\item $\forall x,\,y \in E :\: (x,\,y) = \overline{(y,\, x)}$
 		\item $\forall x,\,y,\, z \in E :\: \forall \alpha,\, \beta \in \mathbb{K} :\: (\alpha x + \beta y,\, z) = \alpha(x,\,z) + \beta(y,\,z)$
 	\end{enumerate}
@@ -667,11 +714,11 @@
 \begin{proof}
 	Зафиксируем $h \in H$. Сначала докажем, что элемент наилучшего приближения для $h$ существует.
 
-	Положим $d := \rho(h,\, M)$. Если $d = 0$, то, в силу замкнутости множества $M$, выполнено $h \in M$, и в качестве элемента наилучшего приближения для $h$ подходит сам $h$. Иначе выберем $\{x_n\} \subset M$ такую, что $\|h - x_n\| \overset{n \to +\infty}{\to} d$. По равенству параллелограмма,
+	Положим $d := \rho(h,\, M)$. Если $d = 0$, то, в силу замкнутости множества $M$, выполнено $h \in M$, и в качестве элемента наилучшего приближения для $h$ подходит сам $h$. Иначе выберем $\{x_n\}_{n = 1}^\infty \subset M$ такую, что $\|h - x_n\| \overset{n \to +\infty}{\to} d$. По равенству параллелограмма,
 	\[
-		\forall n,\,n \in \mathbb{N} :\: \|x_n - x_m\| = 2 \|h - x_n\|^2 + 2\|h - x_m\|^2 - 4\left\|h - \frac{x_n + x_m}{2}\right\|^2
+		\forall n,\,m \in \mathbb{N} :\: \|x_n - x_m\|^2 = 2 \|h - x_n\|^2 + 2\|h - x_m\|^2 - 4\left\|h - \frac{x_n + x_m}{2}\right\|^2
 	\]
-	Поскольку $\|h - x_n\|^2 \overset{n \to +\infty}{\to} d^2,\, \|h - x_m\|^2 \overset{m \to +\infty}{\to} d^2$ и выполнено неравенство $\|h - \frac{x_n + x_m}{2}\| \geq d^2$, последовательность $\{x_n\}$ фундаментальна. Поскольку пространство $H$ полно, а $M$ замкнуто, то существует $x \in M$ такой, что $x_n \to_H x$, причём, в силу непрерывности нормы (\ref{NormCont}), $\|h - x\| = d$
+	Поскольку $\|h - x_n\|^2 \overset{n \to +\infty}{\to} d^2,\, \|h - x_m\|^2 \overset{m \to +\infty}{\to} d^2$ и выполнено неравенство $\|h - \frac{x_n + x_m}{2}\| \geq d^2$, последовательность $\{x_n\}_{n = 1}^\infty$ фундаментальна. Поскольку пространство $H$ полно, а $M$ замкнуто, то существует $x \in M$ такой, что $x_n \to_H x$, причём, в силу непрерывности нормы (\ref{NormCont}), $\|h - x\| = d$
 
 	Покажем теперь, что элемент наилучшего приближения для $h$ единственен. Пусть для некоторого $y \in M$ тоже выполнено равенство $\|h - y\| = d$, тогда, по равенству параллелограмма, выполнено следующее:
 	\[
@@ -679,7 +726,7 @@
 	\]
 	Для данной цепочки мы воспользовались следующими равенствами:
 	\[
-		h - x + h - y = 2h - x - y = 2(h - \frac{x + y}{2});\; h - x - h + y = -(x - y)
+		h - x + h - y = 2h - x - y = 2\left(h - \frac{x + y}{2}\right);\; h - x - h + y = -(x - y)
 	\]
 
 	Итак, $\|x - y\| =0 \Rightarrow x = y$, что и требовалось.
@@ -719,7 +766,7 @@
 
 \subsection{Сепарабельные гильбертовы пространства}
 \begin{definition}
-	Пусть $E$ -- линейное нормированное пространство. Система $\{e_n\} \subset E$ называется базисом Шаудера в $E$, если
+	Пусть $E$ -- линейное нормированное пространство. Система $\{e_n\}_{n=1}^\infty \subset E$ называется базисом Шаудера в $E$, если
 	\[
 		\forall x \in E \: \exists! \{\alpha_n\}_{n = 1}^\infty \subset \mathbb{K} :\: x = \sum_{n = 1}^\infty \alpha_ne_n
 	\]
@@ -728,7 +775,7 @@
 \begin{lemma}
 	Неравенство Бесселя.
 
-	Пусть $E$ -- евклидово пространство, элементы $\{e_i\} \subset E$ образуют ортонормированную систему. Тогда для любого $x \in E$ выполнено следующее неравенство:
+	Пусть $E$ -- евклидово пространство, элементы $\{e_i\}_{i=1}^\infty \subset E$ образуют ортонормированную систему. Тогда для любого $x \in E$ выполнено следующее неравенство:
 	\[
 		\sum_{k = 1}^\infty \vert(x,\, e_k)\vert^2 \leq \|x\|^2
 	\]
@@ -763,7 +810,7 @@
 \end{proof}
 
 \begin{theorem}
-	Пусть $H$ -- сепарабельное гильбертово пространство, $\dim H = +\infty$ и $e = \{e_n\}$ -- ортонормированная система. Тогда следующие условия эквивалентны:
+	Пусть $H$ -- сепарабельное гильбертово пространство, $\dim H = +\infty$ и $e = \{e_n\}_{n=1}^\infty$ -- ортонормированная система. Тогда следующие условия эквивалентны:
 	\begin{enumerate}
 		\item $e$ -- ортонормированный базис в $H$
 		\item $\overline{\langle e\rangle} = H$, то есть $e$ -- полная система.
@@ -904,11 +951,11 @@
   \begin{enumerate}
     \item Линейность данного пространства очевидна. Проверим неравенство треугольника для нормы:
     \[
-      \|A_1 + A_2\| = \sup_{\|x\| = 1}\|(A_1 + A_2)x\| \leq   \sup_{\|x\| = 1}\|A_1x\| + \|A_2x\| \leq \sup_{\|x\| = 1}\|A_1x\| + \sup_{\|x\| = 1}\|A_2x\| = \|A_1\| + \|A_2\|
+      \|A_1 + A_2\| = \sup_{\|x\| = 1}\|(A_1 + A_2)x\| \leq   \sup_{\|x\| = 1}\{\|A_1x\| + \|A_2x\|\} \leq \sup_{\|x\| = 1}\|A_1x\| + \sup_{\|x\| = 1}\|A_2x\| = \|A_1\| + \|A_2\|
     \]
     \item Покажем, что $\mathcal{L}(E_1,\,E_2)$ -- полное, если $E_2$ -- полное.
     
-    Пусть $\{A_n\} \subset \mathcal{L}$ -- фундаментальна, то есть
+    Пусть $\{A_n\}_{n = 1}^\infty \subset \mathcal{L}(E_1,\,E_2)$ -- фундаментальна, то есть
     \[
       \forall \varepsilon > 0 \: \exists N \: \forall n,\,m \geq N :\: \|A_n - A_m\| < \varepsilon
     \]
@@ -916,9 +963,9 @@
     \[
       \forall x \in S_{E_1}(0,\,1) \: \|A_nx - A_mx\| = \|(A_n - A_m)x\| \leq \|A_n - A_m\|\|x\|_{E_1} < \varepsilon
     \]
-    Получается, что $\forall x \in S_{E_1}(0,\,1)$ последовательность $\{A_nx\}$ фундаментальна. Так как $E_2$ -- полное, то эта последовательность сходится. Обозначим её предел через $Ax$. $A$, очевидно, линейный оператор. Покажем, что он ограничен.
+    Получается, что $\forall x \in S_{E_1}(0,\,1)$ последовательность $\{A_nx\}_{n = 1}^\infty$ фундаментальна. Так как $E_2$ -- полное, то эта последовательность сходится. Обозначим её предел через $Ax$. $A$, очевидно, линейный оператор. Покажем, что он ограничен.
 
-    Так как $\|\cdot\|$ -- непрерывная функция, то $\|A_nx\|_{E_2} \to \|Ax\|_{E_2}$. Воспользуемся тем, что $\{A_n\}$ ограничена (из-за фундаментальности), то есть 
+    Так как $\|\cdot\|$ -- непрерывная функция, то $\|A_nx\|_{E_2} \to \|Ax\|_{E_2}$. Воспользуемся тем, что $\{A_n\}_{n = 1}^\infty$ ограничена (из-за фундаментальности), то есть 
     \[
       \exists K \: \forall n :\: \|A_n\| \leq K \Rightarrow \|A_nx\|_{E_2} \leq \|A_n\|\|x\|_{E_1} \leq K\|x\|_{E_1}
     \]
@@ -958,7 +1005,7 @@
 
   Пусть есть $\tilde{A}^1,\, \tilde{A}^2$. Из замкнутости $E_1$:
   \[
-    \forall x \in E_1 \: \exists\{x_n\} \subset D(A) :\: x_n \to x
+    \forall x \in E_1 \: \exists\{x_n\}_{n = 1}^\infty \subset D(A) :\: x_n \to x
   \]
   При этом, $\tilde{A}^1x = \lim_{n \to +\infty}Ax_n = \tilde{A}^2x$. Значит, $\tilde{A}^1 = \tilde{A}^2$.
 
@@ -967,14 +1014,14 @@
   Определим оператор $\tilde{A}$ по формуле $\tilde{A}x = \lim_{n \to +\infty}Ax_n$. Для коректности необходимо показать:
   \begin{itemize}
     \item Предел $\lim_{n \to +\infty}Ax_n$ существует
-    \item Предел не зависит от выбора $\{x_n\}$
+    \item Предел не зависит от выбора $\{x_n\}_{n = 1}^\infty$
     \item Действительно $\tilde{A}|_{D(A)} = A$
   \end{itemize}
 
   Покажем:
   \begin{itemize}
-    \item Так как $\{x_n\}$ сходится, она фундаментальна, значит последовательность $\{Ax_n\} \subset E_2$ фундаментальна. Пространство $E_2$ банахово, поэтому предел $\lim_{n \to +\infty}Ax_n$ существует.
-    \item Пусть есть две последовательности $\{x_n'\},\, \{x_n''\}$, сходящиеся к одному и тому же $x \in E_1$, но пусть пределы $\lim_{n \to +\infty} Ax_n',\, \lim_{n \to +\infty}Ax_n''$ разные. Тогда возьмём последовательность $\{y_n\}$, полученную чередованием элементов $\{x_n'\},\, \{x_n''\}$. Но получим, что $\{Ay_n\}$ расходится. Противоречие предыдущему пункту.
+    \item Так как $\{x_n\}_{n = 1}^\infty$ сходится, она фундаментальна, значит последовательность $\{Ax_n\}_{n = 1}^\infty \subset E_2$ фундаментальна. Пространство $E_2$ банахово, поэтому предел $\lim_{n \to +\infty}Ax_n$ существует.
+    \item Пусть есть две последовательности $\{x_n'\}_{n=1}^\infty,\, \{x_n''\}_{n=1}^\infty$, сходящиеся к одному и тому же $x \in E_1$, но пусть пределы $\lim_{n \to +\infty} Ax_n',\, \lim_{n \to +\infty}Ax_n''$ разные. Тогда возьмём последовательность $\{y_n\}$, полученную чередованием элементов $\{x_n'\}_{n=1}^\infty,\, \{x_n''\}_{n=1}^\infty$. Но получим, что $\{Ay_n\}_{n=1}^\infty$ расходится. Противоречие предыдущему пункту.
     \item Возьмём константную последовательность $\{x\}_{n = 1}^\infty,\, x \in D(A)$. Очевидно, что $\lim_{n \to +\infty} Ax = Ax$. По предыдущему пункту $\lim_{n \to +\infty} Ax_n$ не зависит от выбора последовательности, значит $\tilde{A}|_{D(A)} = A$.
   \end{itemize}
   Осталось показать, что $\tilde{A}$ -- линейный ограниченный оператор. Линейность очевидна из линейности $A$ и предела.
@@ -1001,18 +1048,18 @@
   \[
     X_n = \{x \in X \:\vert\: \sup_{A \in \mathcal{A}} \|Ax\|_Y \leq n\} = \bigcap_{A \in \mathcal{A}} \{x \in X \:\vert\: \|Ax\|_Y \leq n\}
   \]
-  Для любого $A \in \mathcal{A}$ множество $\{x \in X \:\vert\: \|Ax\|_Y \leq n\}$ замкнуто, как прообраз замкнутого шара $\overline{B}_n(0) \subset Y$ под действием непрерывного отображения $A$, а пересечение любого количества замкнутых множеств замкнуто.
+  Для любого $A \in \mathcal{A}$ множество $\{x \in X \:\vert\: \|Ax\|_Y \leq n\}$ замкнуто, как прообраз замкнутого шара $\overline{B}(0,\,n) \subset Y$ под действием непрерывного отображения $A$, а пересечение любого количества замкнутых множеств замкнуто.
 
   Так как $\cup_{n = 1}^\infty X_n = X$, то по теореме Бэра ($X$ полное, а значит все $X_n$ не могут быть не плотными ни в одном шаре, а значит найдётся $m$ и какой-то шар, в котором $X_m$ плотно):
   \[
-    \exists m \: \exists \overline{B}_\varepsilon(x_0) :\: \overline{B}_\varepsilon(x_0) \subseteq X_m
+    \exists m \: \exists \overline{B}(x_0,\,\varepsilon) :\: \overline{B}(x_0,\, \varepsilon) \subseteq X_m
   \]
   Пусть $u \in X,\, \|u\|_X = 1$. Тогда рассмотрим $A \in \mathcal{A}$:
   \begin{align*}
     \|Au\|_Y = \frac{1}{\varepsilon}\|A[\varepsilon u] + Ax_0 - Ax_0\|_Y = \frac{1}{\varepsilon}\|A[x_0 + \varepsilon u] - Ax_0\|_Y \leq\\
-    \frac{1}{\varepsilon}\left(\|A[x_0 + \varepsilon u]\| + \|Ax_0\|_Y\right) \leq \frac{1}{\varepsilon} \leq \frac{1}{\varepsilon}(m + m)
+    \frac{1}{\varepsilon}\left(\|A[x_0 + \varepsilon u]\|_Y + \|Ax_0\|_Y\right) \leq \frac{1}{\varepsilon}(m + m)
   \end{align*}
-  Последнее неравенство верно из-за того, что $x_0 \in X_m,\, x_0 + \varepsilon u \in \overline{B}_\varepsilon(x_0) \subset X_m$. В неравенстве сверху можно перейти к супремуму по $u$ и получить, что
+  Последнее неравенство верно из-за того, что $x_0 \in X_m,\, x_0 + \varepsilon u \in \overline{B}(x_0,\,\varepsilon) \subset X_m$. В неравенстве сверху можно перейти к супремуму по $u$ и получить, что
   \[
     \forall A \in \mathcal{A} :\: \|A\| \leq \frac{2m}{\varepsilon} < +\infty
   \]
@@ -1022,18 +1069,18 @@
 \begin{theorem}
   Полнота $\mathcal{L}(E_1,\, E_2)$ относительно поточечной сходимости.
 
-  Пусть $E_1,\, E_2$ -- банаховы пространства, $\{A_n\} \subset \mathcal{L}(E_1,\, E_2)$, причём $\forall x \in E_1 :\: \{A_nx\}$ -- фундаментальная в $E_2$. Тогда
+  Пусть $E_1,\, E_2$ -- банаховы пространства, $\{A_n\}_{n=1}^\infty \subset \mathcal{L}(E_1,\, E_2)$, причём $\forall x \in E_1 :\: \{A_nx\}_{n=1}^\infty$ -- фундаментальная в $E_2$. Тогда
   \[
     \exists A \in \mathcal{L}(E_1,\, E_2) \: \forall x \in E_1 :\: \lim_{n \to +\infty} A_nx = Ax 
   \]
 \end{theorem}
 
 \begin{proof}
-  Так как $\{A_nx\}$ фундаментальна в банаховом $E_2$, то $\exists \lim_{n \to +\infty} A_nx,\, Ax := \lim_{n \to +\infty}A_nx$.
+  Так как $\{A_nx\}_{n=1}^\infty$ фундаментальна в банаховом $E_2$, то $\exists \lim_{n \to +\infty} A_nx,\, Ax := \lim_{n \to +\infty}A_nx$.
 
   Осталось показать, что определённый таким образом оператор -- линейный непрерывный. Линейность очевидна из линейности предела и каждого $A_n$.
 
-  Так как $\forall x \in E_1 :\: \{A_nx\}$ фундаментальна, то $\{A_n\}$ поточечно ограничена и по теореме Банаха-Штейнгауза ограничена равномерна:
+  Так как $\forall x \in E_1 :\: \{A_nx\}_{n=1}^\infty$ фундаментальна, то $\{A_n\}_{n=1}^\infty$ поточечно ограничена и по теореме Банаха-Штейнгауза ограничена равномерна:
   \[
     \exists M \: \forall n \in \mathbb{N} :\: \|A_n\| \leq M  
   \]
@@ -1047,7 +1094,7 @@
 \begin{theorem}
   Критерий поточечной сходимости операторов из $\mathcal{L}(E_1,\,E_2)$.
 
-  Пусть $E_1$ -- банохово, $E_2$ -- линейное нормированное пространство. Верно, что $\forall \{A_n\} \in \mathcal{L}(E_1,\,E_2)$, $A \in \mathcal{L}(E_1,\,E_2)$:
+  Пусть $E_1$ -- банахово, $E_2$ -- линейное нормированное пространство. Верно, что $\forall \{A_n\}_{n=1}^\infty \subset \mathcal{L}(E_1,\,E_2)$, $A \in \mathcal{L}(E_1,\,E_2)$:
   \[
     A_n \overset{\text{поточечно}}{\to} A \Leftrightarrow \begin{cases}
       \exists M \: \forall n :\: \|A_n\| \leq M\\
@@ -1057,7 +1104,7 @@
 \end{theorem}
 
 \begin{proof}
-  ($\Rightarrow$) Пункт 2 очевиден. Из поточечной сходимости $\{A_nx\}$ следует поточечная ограниченность $\{A_nx\}$. Значит, по теорема Банаха-Штейнгауза последовательность $\{\|A_n\|\}$ ограничена.
+  ($\Rightarrow$) Пункт 2 очевиден. Из поточечной сходимости $\{A_nx\}$ следует поточечная ограниченность $\{A_nx\}_{n=1}^\infty$. Значит, по теорема Банаха-Штейнгауза последовательность $\{\|A_n\|\}_{n=1}^\infty$ ограничена.
 
   ($\Leftarrow$) Так как множество $\langle S\rangle$ всюжу плотно в $E_1$:
   \[
