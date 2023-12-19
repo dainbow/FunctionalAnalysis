@@ -68,7 +68,7 @@
 
 \subsection{Определения}
 \begin{definition}
-	Метрическим пространством называется множества $X$ с функцией $\rho :\: X^2 \to \mathbb{R}$, обладающей следующими свойствами:
+	Метрическим пространством называется множество $X$ с функцией $\rho :\: X^2 \to \mathbb{R}$, обладающей следующими свойствами:
 	\begin{enumerate}
 		\item $\forall x,\, y \in X :\: \rho(x,\,y) \geq 0$, причём $\rho(x,\,y) = 0 \Leftrightarrow x = y$
 		\item $\forall x,\, y \in X :\: \rho(x,\,y) = \rho(y,\,x)$
@@ -88,7 +88,7 @@
 \end{definition}
 
 \begin{definition}
-	Пусть $X$ -- метрическое пространство, $Y \subset X$. Подстранством пространства $X$ называется метрическое пространство $Y$ с метрикой, являющейся сужением метрики на $X$.
+	Пусть $X$ -- метрическое пространство, $Y \subset X$. Подпространством пространства $X$ называется метрическое пространство $Y$ с метрикой, являющейся сужением метрики на $X$.
 \end{definition}
 
 \begin{definition}
@@ -159,7 +159,7 @@
 
 	Пусть $E$ измеримое множество, на котором задана мера $\mu$. Тогда для любых $p,\,q \geq 1,\, \frac{1}{p} + \frac{1}{q} = 1$, если $f \in L^p(E),\, g \in L^q(E)$, то $f \cdot g \in L^1$, причём выполнено следующее:
 	\[
-		\int_E \vert f(x)g(x) \vert d\mu \leq \left(\int_E \vert f(x)\vert d\mu\right)^{\frac{1}{p}} \cdot \left(\int_E \vert g(x) \vert d\mu\right)^{\frac{1}{q}}
+		\int_E \vert f(x)g(x) \vert d\mu \leq \left(\int_E \vert f(x)\vert^p d\mu\right)^{\frac{1}{p}} \cdot \left(\int_E \vert g(x) \vert^q d\mu\right)^{\frac{1}{q}}
 	\]
 \end{lemma}
 
@@ -198,11 +198,11 @@
 	\]
 	Будем полагать, что $A,\,B < \infty$. (Иначе неравенство тривиально). Тогда
 	\[
-		(f + g)^p \leq (2\max{f,\,g})^p \leq 2^p(f^p + g^p) \Rightarrow C < \infty
+		(f + g)^p \leq (2\max\{f,\,g\})^p \leq 2^p(f^p + g^p) \Rightarrow C < \infty
 	\]
 	Тогда введём $q := \frac{p}{p-1}$ и использум неравенство Гёльдера в следующем виде:
 	\begin{align*}
-		C^P = \int_E f(f + g)^{p - 1}d\mu + \int_Eg(f + g)^{p-1}d\mu \overset{\text{Гёльдер}}{\leq}                                                                                                                 \\
+		C^p = \int_E f(f + g)^{p - 1}d\mu + \int_Eg(f + g)^{p-1}d\mu \overset{\text{Гёльдер}}{\leq}                                                                                                                 \\
 		\left(\int_E f^pd\mu\right)^{\frac{1}{p}}\cdot\left(\int_E(f + g)^{(p - 1)q}d\mu\right)^{\frac{1}{q}} + \left(\int_Eg^pd\mu\right)^{\frac{1}{p}}\cdot\left(\int_E(f + g)^{(p-1)q}d\mu\right)^{\frac{1}{q}}= \\
 		(A + B)\left(\int_E (f + g)^pd\mu\right)^{\frac{1}{q}} = (A + B)C^{p -1}
 	\end{align*}
@@ -257,7 +257,7 @@
 \section{Полные метрические пространства}
 \subsection{Теорема о вложенных шарах, теорема Бэра}
 \begin{definition}
-	Пусть $X$ -- метрическое пространство. Последовательность $\{x_n\} \subset X$ называется фундаментальной, если выполнено следующее условие:
+	Пусть $X$ -- метрическое пространство. Последовательность $\{x_n\}_{n = 1}^\infty \subset X$ называется фундаментальной, если выполнено следующее условие:
 	\[
 		\forall \varepsilon > 0 \: \exists N \in \mathbb{N} \: \forall n,\,m \geq N :\: \rho(x_n,\, x_m) < \varepsilon
 	\]
@@ -282,7 +282,7 @@
 \begin{theorem}
 	Теорема Бэра.
 
-	Пусть $X$ -- полное метрическое пространство. Тогда $X$ нельзя представить в виде $X = \bigcup_{n = 1}^\infty M_n$, где множества $M_n \subset X$ -- не плотные ни в одном шаре в $X$ (нигде не плотные).
+	Пусть $X$ -- полное метрическое пространство. Тогда $X$ нельзя представить в виде $X = \bigcup_{n = 1}^\infty M_n$, где множества $M_n \subset X$ -- не плотные ни в одном шаре в $X$ (нигде не плотные)
 \end{theorem}
 
 \begin{proof}
@@ -392,7 +392,7 @@
 \end{lemma}
 
 \begin{proof}
-	Из вполне ограниченности ограниченность следует получается, как объединение конечного числа ограниченных множеств.
+	Из вполне ограниченности ограниченность получается, как объединение конечного числа ограниченных множеств.
 \end{proof}
 
 \begin{theorem}
